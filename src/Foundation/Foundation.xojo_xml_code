@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
+<RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20150400">
 <block type="Module" ID="1580165119">
  <ObjName>Foundation</ObjName>
- <ObjContainerID>0</ObjContainerID>
+ <ObjContainerID>900040703</ObjContainerID>
  <IsClass>0</IsClass>
  <ItemFlags>1</ItemFlags>
  <IsInterface>0</IsInterface>
@@ -33,6 +33,64 @@
   <IsShared>0</IsShared>
   <ItemParams>Extends haystack As String, needle As String</ItemParams>
   <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ResizeToFit</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Resizes a picture, constraining it within a maximum width and height. Optionally stretches to fill the space.</CodeDescription>
+  <PartID>395649023</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ResizeToFit(Extends p As Picture, maxWidth As Integer, maxHeight As Integer, scaleMode As Foundation.PictureScaleModes = Foundation.PictureScaleModes.Fit, onlyShrink As Boolean = True) As Picture</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Resizes a picture, constraining it within a maximum width and height. Optionally stretches to fill the space.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter Extends p: The picture to resize.</SourceLine>
+   <SourceLine>' - Parameter maxWidth: The maximum width the new picture can be.</SourceLine>
+   <SourceLine>' - Parameter maxHeight: The maxium height the new picture can be.</SourceLine>
+   <SourceLine>' - Parameter scaleMode: How the picture should be resized. Defaults to "fit".</SourceLine>
+   <SourceLine>' - Parameter onlyShrink: If True then will never enlarge the picture to fill if it already fits.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Returns: A new picture object constained to the specified width and height.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Notes:</SourceLine>
+   <SourceLine>' Thanks to Sam Rolands: https://forum.xojo.com/t/proportionally-resizing-a-picture/16732/11</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var nSize As Size</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Select Case scaleMode</SourceLine>
+   <SourceLine>Case PictureScaleModes.Fit, PictureScaleModes.Fill</SourceLine>
+   <SourceLine>Var scale As Double = If(_</SourceLine>
+   <SourceLine>scaleMode = PictureScaleModes.Fit, _</SourceLine>
+   <SourceLine>Min(maxHeight / p.Height, maxWidth / p.Width), _</SourceLine>
+   <SourceLine>Max(maxHeight / p.Height, maxWidth / p.Width))</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If onlyShrink Then scale = Min(scale, 1.0)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>nSize = New Size(Floor(p.Width * scale), Floor(p.Height * scale))</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Case PictureScaleModes.StretchToFill</SourceLine>
+   <SourceLine>nSize = New Size(maxWidth, maxHeight)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Select</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Create the target image and draw our image into the centre.</SourceLine>
+   <SourceLine>Var rValue As New Picture(Min(nSize.Width, maxWidth), Min(nSize.Height, maxHeight))</SourceLine>
+   <SourceLine>rValue.Graphics.DrawPicture(p, (rValue.Width - nSize.Width) * 0.5, (rValue.Height - nSize.Height ) * 0.5, _</SourceLine>
+   <SourceLine>nSize.Width, nSize.Height, 0, 0, p.Width, p.Height)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return rValue</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>Extends p As Picture, maxWidth As Integer, maxHeight As Integer, scaleMode As Foundation.PictureScaleModes = Foundation.PictureScaleModes.Fit, onlyShrink As Boolean = True</ItemParams>
+  <ItemResult>Picture</ItemResult>
  </Method>
  <ViewBehavior>
   <ViewProperty>
@@ -69,5 +127,22 @@
    <ItemType>Integer</ItemType>
   </ViewProperty>
  </ViewBehavior>
+ <Enumeration>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemName>PictureScaleModes</ItemName>
+  <ItemFlags>1</ItemFlags>
+  <ItemType>Integer</ItemType>
+  <ItemName>PictureScaleModes</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>The available options for resizing pictures using.</CodeDescription>
+  <PartID>1270345727</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Fill</SourceLine>
+   <SourceLine>Fit</SourceLine>
+   <SourceLine>StretchToFill</SourceLine>
+  </ItemSource>
+ </Enumeration>
 </block>
 </RBProject>
