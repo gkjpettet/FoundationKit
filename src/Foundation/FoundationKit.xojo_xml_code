@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20150400">
 <block type="Module" ID="1580165119">
- <ObjName>Foundation</ObjName>
- <ObjContainerID>900040703</ObjContainerID>
+ <ObjName>FoundationKit</ObjName>
+ <ObjContainerID>0</ObjContainerID>
  <IsClass>0</IsClass>
  <ItemFlags>1</ItemFlags>
  <IsInterface>0</IsInterface>
@@ -42,7 +42,7 @@
   <PartID>395649023</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function ResizeToFit(Extends p As Picture, maxWidth As Integer, maxHeight As Integer, scaleMode As Foundation.PictureScaleModes = Foundation.PictureScaleModes.Fit, onlyShrink As Boolean = True) As Picture</SourceLine>
+   <SourceLine>Function ResizeToFit(Extends p As Picture, maxWidth As Integer, maxHeight As Integer, scaleMode As FoundationKit.PictureScaleModes = FoundationKit.PictureScaleModes.Fit, onlyShrink As Boolean = True) As Picture</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Resizes a picture, constraining it within a maximum width and height. Optionally stretches to fill the space.</SourceLine>
    <SourceLine>'</SourceLine>
@@ -89,7 +89,7 @@
   <AliasName></AliasName>
   <ItemFlags>0</ItemFlags>
   <IsShared>0</IsShared>
-  <ItemParams>Extends p As Picture, maxWidth As Integer, maxHeight As Integer, scaleMode As Foundation.PictureScaleModes = Foundation.PictureScaleModes.Fit, onlyShrink As Boolean = True</ItemParams>
+  <ItemParams>Extends p As Picture, maxWidth As Integer, maxHeight As Integer, scaleMode As FoundationKit.PictureScaleModes = FoundationKit.PictureScaleModes.Fit, onlyShrink As Boolean = True</ItemParams>
   <ItemResult>Picture</ItemResult>
  </Method>
  <ViewBehavior>
