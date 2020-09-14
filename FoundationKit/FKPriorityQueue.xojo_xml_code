@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
+<block type="Module" ID="2400255">
+ <ObjName>FKPriorityQueue</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>1</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Note>
+  <ItemName>About</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>648456191</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>About</NoteLine>
+   <NoteLine>Ported from the OpenJDK implementation of a priority queue:</NoteLine>
+   <NoteLine>https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/PriorityQueue.java</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>An unbounded priority Queue queue based on a priority heap.</NoteLine>
+   <NoteLine>The elements of the priority queue are ordered according to their</NoteLine>
+   <NoteLine>Comparable natural ordering, or by a Comparator provided at queue construction time, </NoteLine>
+   <NoteLine>depending on which constructor is used. A priority queue does not permit Nil elements.</NoteLine>
+   <NoteLine>A priority queue relying on natural ordering also does not permit insertion of non-comparable </NoteLine>
+   <NoteLine>objects (doing so may result in an `IllegalCastException`).</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>The _head_ of this queue is the _least_ element with respect to the specified ordering.  </NoteLine>
+   <NoteLine>If multiple elements are tied for least value, the head is one of those elements -- ties are</NoteLine>
+   <NoteLine>broken arbitrarily. The queue retrieval operations `Poll`, `Remove`, `Peek}`, and `Element` access the</NoteLine>
+   <NoteLine>element at the head of the queue.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>A priority queue is unbounded, but has an internal _capacity_ governing the size of an array used </NoteLine>
+   <NoteLine>to store the elements on the queue.  It is always at least as large as the queue</NoteLine>
+   <NoteLine>size. As elements are added to a priority queue, its capacity grows automatically.  </NoteLine>
+   <NoteLine>The details of the growth policy are not specified.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>This class and its iterator implement all of the _optional_ methods of the `Collection` and</NoteLine>
+   <NoteLine>`Iterator` interfaces. The `Iterator` provided in method `Iterator` and the `Spliterator` provided </NoteLine>
+   <NoteLine>in method `Sspliterator` are _not_ guaranteed to traverse the elements of</NoteLine>
+   <NoteLine>the priority queue in any particular order. If you need ordered traversal, consider </NoteLine>
+   <NoteLine>using `Arrays.Sort(pq.toArray)`.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>**Note that this implementation is not synchronized.**</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Multiple threads should not access a `FKPriorityQueue` instance concurrently if any of the threads </NoteLine>
+   <NoteLine>modifies the queue.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Implementation note: this implementation provides O(log(n)) time for the enqueuing and dequeuing methods</NoteLine>
+   <NoteLine>`Offer`, `Poll`, `Remove` and `Add`); linear time for the `Remove(Object)` and `Contains(Object)`</NoteLine>
+   <NoteLine>methods and constant time for the retrieval methods `Peek, `Element`, and `Size`.</NoteLine>
+   <NoteLine></NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>
