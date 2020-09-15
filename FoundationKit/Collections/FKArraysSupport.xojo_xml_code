@@ -2,7 +2,7 @@
 <RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
 <block type="Module" ID="1528862719">
  <ObjName>FKArraysSupport</ObjName>
- <ObjContainerID>0</ObjContainerID>
+ <ObjContainerID>60385279</ObjContainerID>
  <IsClass>1</IsClass>
  <ItemFlags>1</ItemFlags>
  <IsInterface>0</IsInterface>
@@ -36,7 +36,7 @@
   <PartID>1233131519</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function NewLength(oldLength As Integer, minGrowth As Integer, prefGrowth As Integer) As Integer</SourceLine>
+   <SourceLine>Shared Function NewLength(oldLength As Integer, minGrowth As Integer, prefGrowth As Integer) As Integer</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Calculates a new array length given an array's current length, a preferred growth </SourceLine>
    <SourceLine>' value, and a minimum growth value.</SourceLine>
@@ -55,7 +55,7 @@
    <SourceLine>' Otherwise an `OutOfMemoryException` is raised.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Var ewLength As Integer = Max(minGrowth, prefGrowth) + oldLength</SourceLine>
+   <SourceLine>Var newLength As Integer = Max(minGrowth, prefGrowth) + oldLength</SourceLine>
    <SourceLine>If newLength - MAX_ARRAY_LENGTH &lt;= 0 Then Return newLength</SourceLine>
    <SourceLine>Return HugeLength(oldLength, minGrowth)</SourceLine>
    <SourceLine></SourceLine>
@@ -64,8 +64,34 @@
   <TextEncoding>134217984</TextEncoding>
   <AliasName></AliasName>
   <ItemFlags>0</ItemFlags>
-  <IsShared>0</IsShared>
+  <IsShared>1</IsShared>
   <ItemParams>oldLength As Integer, minGrowth As Integer, prefGrowth As Integer</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>HugeLength</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>743411711</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Shared Function HugeLength(oldLength As Integer, minGrowth As Integer) As Integer</SourceLine>
+   <SourceLine>Var minLength As Int32 = oldLength + minGrowth</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Check for overflow.</SourceLine>
+   <SourceLine>If minLength &lt; 0 Then Raise New OutOfMemoryException("Required array length too large")</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If minLength &lt;= MAX_ARRAY_LENGTH Then Return MAX_ARRAY_LENGTH</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return INT32_MAX_VALUE</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>1</IsShared>
+  <ItemParams>oldLength As Integer, minGrowth As Integer</ItemParams>
   <ItemResult>Integer</ItemResult>
  </Method>
  <Note>
@@ -78,8 +104,6 @@
    <NoteLine>About</NoteLine>
    <NoteLine></NoteLine>
    <NoteLine>https://java-browser.yawk.at/java/13/java.base/jdk/internal/util/ArraysSupport.java</NoteLine>
-   <NoteLine></NoteLine>
-   <NoteLine>&#32;</NoteLine>
   </ItemSource>
   <ItemFlags>0</ItemFlags>
  </Note>
@@ -128,6 +152,16 @@
   <ItemType>2</ItemType>
   <ItemDef>2147483639</ItemDef>
   <ItemFlags>0</ItemFlags>
+ </Constant>
+ <Constant>
+  <ItemName>INT32_MAX_VALUE</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>2012235775</PartID>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemType>2</ItemType>
+  <ItemDef>2147483647</ItemDef>
+  <ItemFlags>33</ItemFlags>
  </Constant>
 </block>
 </RBProject>

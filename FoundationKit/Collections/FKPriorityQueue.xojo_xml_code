@@ -2,7 +2,7 @@
 <RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
 <block type="Module" ID="2400255">
  <ObjName>FKPriorityQueue</ObjName>
- <ObjContainerID>0</ObjContainerID>
+ <ObjContainerID>60385279</ObjContainerID>
  <IsClass>1</IsClass>
  <ItemFlags>1</ItemFlags>
  <IsInterface>0</IsInterface>
@@ -130,7 +130,7 @@
   <PartID>124805119</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function EnsureNonEmpty(es() as FKElement) As FKElement()</SourceLine>
+   <SourceLine>Function EnsureNonEmpty(es() as FKCollectionElement) As FKCollectionElement()</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Ensures that Queue(0) exists, helping `Peek` and `Poll`.</SourceLine>
    <SourceLine>'</SourceLine>
@@ -142,7 +142,7 @@
    <SourceLine>If es.Count &gt; 0 Then</SourceLine>
    <SourceLine>Return es</SourceLine>
    <SourceLine>Else</SourceLine>
-   <SourceLine>Var result(0) As FKElement</SourceLine>
+   <SourceLine>Var result(0) As FKCollectionElement</SourceLine>
    <SourceLine>Return result</SourceLine>
    <SourceLine>End If</SourceLine>
    <SourceLine></SourceLine>
@@ -152,8 +152,8 @@
   <AliasName></AliasName>
   <ItemFlags>33</ItemFlags>
   <IsShared>0</IsShared>
-  <ItemParams>es() as FKElement</ItemParams>
-  <ItemResult>FKElement()</ItemResult>
+  <ItemParams>es() as FKCollectionElement</ItemParams>
+  <ItemResult>FKCollectionElement()</ItemResult>
  </Method>
  <Method>
   <ItemName>Grow</ItemName>
@@ -170,14 +170,16 @@
    <SourceLine>' - Parameter minCapacity: The desired minimum capacity.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Var oldCapacity As Integer = queue.Count</SourceLine>
+   <SourceLine>Var oldCapacity As Integer = Queue.Count</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>// Double the size if small, else grow by 50%.</SourceLine>
-   <SourceLine>Var newCapacity As Integer = ArraysSupport.newLength(oldCapacity,</SourceLine>
-   <SourceLine>minCapacity - oldCapacity, /* minimum growth */</SourceLine>
-   <SourceLine>oldCapacity &lt; 64 ? oldCapacity + 2 : oldCapacity &gt;&gt; 1</SourceLine>
-   <SourceLine>/* preferred growth */);</SourceLine>
-   <SourceLine>queue = Arrays.copyOf(queue, newCapacity)</SourceLine>
+   <SourceLine>Var newCapacity As Integer = FKArraysSupport.NewLength(_</SourceLine>
+   <SourceLine>oldCapacity, _</SourceLine>
+   <SourceLine>minCapacity - oldCapacity, _</SourceLine>
+   <SourceLine>If(oldCapacity &lt; 64, oldCapacity + 2, MathsKit.RShift(oldCapacity, 1)))</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Queue = FKArrays.CopyOf(queue, newCapacity)</SourceLine>
+   <SourceLine></SourceLine>
    <SourceLine>End Sub</SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
@@ -186,6 +188,278 @@
   <IsShared>0</IsShared>
   <ItemParams>minCapacity As Integer</ItemParams>
   <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Add</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Inserts the specified element into this priority queue, if permitted.</CodeDescription>
+  <PartID>655028223</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Add(e As FKCollectionElement) As Boolean</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Inserts the specified element into this priority queue, if permitted.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter e: The element to add.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Returns: True if the element was added to this priority queue.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return Offer(e)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>e As FKCollectionElement</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Offer</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions.</CodeDescription>
+  <PartID>857980927</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Offer(e As FKCollectionElement) As Boolean</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Inserts the specified element into this queue if it is possible to do so immediately </SourceLine>
+   <SourceLine>' without violating capacity restrictions.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter e: The element to add.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Returns: True if the element was added to this queue or False if not.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Raises: NilObjectException if the passed element is Nil.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If e Is Nil Then Raise New NilObjectException("Cannot add a Nil element to a priority queue")</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>ModCount = ModCount + 1</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var i As Integer = Size</SourceLine>
+   <SourceLine>If i &gt;= queue.Ubound + 1 Then Grow(i + 1)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>SiftUp(i, e)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>mSize = i + 1</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>e As FKCollectionElement</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Peek</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Retrieves, but does not remove, the head of this queue, or returns Nil if this queue is empty.</CodeDescription>
+  <PartID>1968197631</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Peek() As FKCollectionElement</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Retrieves, but does not remove, the head of this queue, or returns Nil if this </SourceLine>
+   <SourceLine>' queue is empty.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Returns: The head of the queue or Nil.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return Queue(0)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult>FKCollectionElement</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>IndexOf</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns the index in the queue of the passed object or -1 if it's not present.</CodeDescription>
+  <PartID>1988087807</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function IndexOf(obj As FKCollectionElement) As Integer</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Returns the index in the queue of the passed object or -1 if it's not present.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter obj: The object to find.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Returns: The 0-based index in the queue or -1 if not found.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If obj &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>Var iLimit As Integer = Queue.LastRowIndex</SourceLine>
+   <SourceLine>For i As Integer = 0 To iLimit</SourceLine>
+   <SourceLine>If obj = Queue(i) Then Return i</SourceLine>
+   <SourceLine>Next i</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return -1</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>obj As FKCollectionElement</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Remove</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Removes a single instance of the specified element from this queue, if it is present. Returns True if successful.</CodeDescription>
+  <PartID>1442248703</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Remove(obj As FKCollectionElement) As Boolean</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Removes a single instance of the specified element from this queue, if it is present.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter obj: Telement to be removed from this queue.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Returns: True if this queue changed as a result of this call.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var i As Integer = IndexOf(obj)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If i = -1 Then</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>Queue.RemoveRowAt(i)</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>obj As FKCollectionElement</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Contains</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns True if this queue contains the specified element.</CodeDescription>
+  <PartID>1056483327</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Contains(obj As FKCollectionElement) As Boolean</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Returns True if this queue contains the specified element.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter obj: The object to be checked for containment in this queue.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Notes:</SourceLine>
+   <SourceLine>' Returns True if and only if this queue contains at least one element `e` such that `o = e`.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return IndexOf(obj) &gt;= 0</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>obj As FKCollectionElement</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ToArray</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns a new array containing all of the elements in this queue. The elements are in no particular order.</CodeDescription>
+  <PartID>1887557631</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToArray() As FKCollectionElement()</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Returns a new array containing all of the elements in this queue. </SourceLine>
+   <SourceLine>' The elements are in no particular order.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return FKArrays.CopyOf(Queue, Size)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult>FKCollectionElement()</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Clear</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Removes all of the elements from this priority queue.</CodeDescription>
+  <PartID>923916287</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Clear()</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Removes all of the elements from this priority queue.</SourceLine>
+   <SourceLine>' The queue will be empty after this call returns.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>ModCount = ModCount + 1</SourceLine>
+   <SourceLine>Queue.RemoveAllRows</SourceLine>
+   <SourceLine>mSize = 0</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Poll</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Retrieves and removes the head of this queue, or returns Nil if this queue is empty.</CodeDescription>
+  <PartID>2090745855</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Poll() As FKCollectionElement</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Retrieves and removes the head of this queue, or returns Nil if this queue is empty.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>#Pragma Error "TODO"</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult>FKCollectionElement</ItemResult>
  </Method>
  <Note>
   <ItemName>About</ItemName>
@@ -240,7 +514,7 @@
   <PartID>646289407</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Queue() As FKElement</SourceLine>
+   <SourceLine>Queue() As FKCollectionElement</SourceLine>
    <SourceLine>The priority queue is represented as a balanced binary heap: the two</SourceLine>
    <SourceLine>children of queue(n) are queue(2*n+1) and queue(2*(n+1)). The</SourceLine>
    <SourceLine>priority queue is ordered by comparator, or by the elements'</SourceLine>
@@ -250,24 +524,24 @@
    <SourceLine></SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
-  <ItemDeclaration>Queue() As FKElement</ItemDeclaration>
+  <ItemDeclaration>Queue() As FKCollectionElement</ItemDeclaration>
   <ItemFlags>0</ItemFlags>
   <IsShared>0</IsShared>
  </Property>
  <Property>
-  <ItemName>Size</ItemName>
+  <ItemName>mSize</ItemName>
   <Compatibility></Compatibility>
   <Visible>1</Visible>
   <CodeDescription>The number of elements in the priority queue.</CodeDescription>
   <PartID>672718847</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Size As Integer</SourceLine>
+   <SourceLine>mSize As Integer</SourceLine>
    <SourceLine></SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
-  <ItemDeclaration>Size As Integer</ItemDeclaration>
-  <ItemFlags>0</ItemFlags>
+  <ItemDeclaration>mSize As Integer</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
   <IsShared>0</IsShared>
  </Property>
  <Property>
@@ -301,6 +575,33 @@
   <ItemDeclaration>Comparator As FKComparator</ItemDeclaration>
   <ItemFlags>1</ItemFlags>
   <IsShared>0</IsShared>
+ </Property>
+ <Property>
+  <ItemName>Size</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>307615743</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Size As Integer</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>Size As Integer</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>Return mSize</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
  </Property>
  <ViewBehavior>
   <ViewProperty>
@@ -337,7 +638,7 @@
    <ItemType>Integer</ItemType>
   </ViewProperty>
   <ViewProperty>
-   <ObjName>Size</ObjName>
+   <ObjName>mSize</ObjName>
    <PropertyGroup>Behavior</PropertyGroup>
    <ItemType>Integer</ItemType>
   </ViewProperty>
