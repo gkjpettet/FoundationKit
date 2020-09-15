@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
+<block type="Module" ID="1528862719">
+ <ObjName>FKArraysSupport</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>1</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>Constructor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>848992255</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Constructor()</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Private to prevent instantiation.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>NewLength</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Calculates a new array length given an array's current length, a preferred growth value, and a minimum growth value.</CodeDescription>
+  <PartID>1233131519</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function NewLength(oldLength As Integer, minGrowth As Integer, prefGrowth As Integer) As Integer</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Calculates a new array length given an array's current length, a preferred growth </SourceLine>
+   <SourceLine>' value, and a minimum growth value.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter oldLength: Current length of the array (must be non negative).</SourceLine>
+   <SourceLine>' - Parameter minGrowth: Minimum required growth of the array length (must be positive).</SourceLine>
+   <SourceLine>' - Parameter prefGrowth: Ppreferred growth of the array length (ignored, if less then `minGrowth`).</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Notes:</SourceLine>
+   <SourceLine>' If the preferred growth value is less than the minimum growth value, the </SourceLine>
+   <SourceLine>' minimum growth value is used in its place. If the sum of the current length </SourceLine>
+   <SourceLine>' and the preferred growth value does not exceed `MAX_ARRAY_LENGTH`, that sum is </SourceLine>
+   <SourceLine>' returned. If the sum of the current length and the minimum growth value does not</SourceLine>
+   <SourceLine>' exceed `MAX_ARRAY_LENGTH`, then `MAX_ARRAY_LENGTH` is returned.</SourceLine>
+   <SourceLine>' If the sum does not overflow an Int32, then `Int32.MAX_VALUE` is returned.  </SourceLine>
+   <SourceLine>' Otherwise an `OutOfMemoryException` is raised.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var ewLength As Integer = Max(minGrowth, prefGrowth) + oldLength</SourceLine>
+   <SourceLine>If newLength - MAX_ARRAY_LENGTH &lt;= 0 Then Return newLength</SourceLine>
+   <SourceLine>Return HugeLength(oldLength, minGrowth)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>oldLength As Integer, minGrowth As Integer, prefGrowth As Integer</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Note>
+  <ItemName>About</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1955549183</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>About</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>https://java-browser.yawk.at/java/13/java.base/jdk/internal/util/ArraysSupport.java</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>&#32;</NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+ <Constant>
+  <ItemName>MAX_ARRAY_LENGTH</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>The maximum length of array to allocate.</CodeDescription>
+  <PartID>1905184767</PartID>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemType>2</ItemType>
+  <ItemDef>2147483639</ItemDef>
+  <ItemFlags>0</ItemFlags>
+ </Constant>
+</block>
+</RBProject>

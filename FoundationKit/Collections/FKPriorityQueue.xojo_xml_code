@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
+<block type="Module" ID="2400255">
+ <ObjName>FKPriorityQueue</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>1</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>Constructor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Creates a PriorityQueue with the default initial capacity (11) that orders its elements according to their natural ordering.</CodeDescription>
+  <PartID>206260223</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Constructor()</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Creates a PriorityQueue with the default initial capacity (11) that orders </SourceLine>
+   <SourceLine>' its elements according to their natural ordering.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Constructor(DEFAULT_INITIAL_CAPACITY)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Constructor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Creates a PriorityQueue with the specified initial capacity that orders its elements according to their natural ordering.</CodeDescription>
+  <PartID>572372991</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Constructor(initialCapacity As Integer)</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Creates a PriorityQueue with the specified initial capacity that orders its </SourceLine>
+   <SourceLine>' elements according to their natural ordering.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter initialCapacity: The initial capacity for this priority queue.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Raises: InvalidArgumentException if `initialCapacity` is less than 1.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Constructor(initialCapacity, Nil)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>initialCapacity As Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Constructor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>928215039</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Constructor(comparator As FKComparator)</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Creates a PriorityQueue with the default initial capacity and whose elements </SourceLine>
+   <SourceLine>' are ordered according to the specified comparator.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter comparator: The comparator that will be used to order this priority </SourceLine>
+   <SourceLine>'                         queue. If `Nil`, the natural ordering of the elements </SourceLine>
+   <SourceLine>'                         will be used.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Constructor(DEFAULT_INITIAL_CAPACITY, comparator)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>comparator As FKComparator</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Constructor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1226930175</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Constructor(initialCapacity As Integer, comparator As FKComparator)</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Creates a `PriorityQueue` with the specified initial capacity that orders its </SourceLine>
+   <SourceLine>' elements according to the specified comparator.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter initialCapacity: The initial capacity for this priority queue.</SourceLine>
+   <SourceLine>' - Parameter comparator: The comparator that will be used to order this</SourceLine>
+   <SourceLine>'                         priority queue. If `Nil`, the natural ordering of </SourceLine>
+   <SourceLine>'                         the elements will be used.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Raises: InvalidArgumentException if `initialCapacity` is less than 1.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If initialCapacity &lt; 1 Then Raise New InvalidArgumentException</SourceLine>
+   <SourceLine>Self.Queue.ResizeTo(initialCapacity - 1)</SourceLine>
+   <SourceLine>Self.Comparator = comparator</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>initialCapacity As Integer, comparator As FKComparator</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>EnsureNonEmpty</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Ensures that Queue(0) exists, helping `Peek` and `Poll`.</CodeDescription>
+  <PartID>124805119</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function EnsureNonEmpty(es() as FKElement) As FKElement()</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Ensures that Queue(0) exists, helping `Peek` and `Poll`.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter es(): The array to ensure is non-empty.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Returns: The original array if non-empty or a new empty array.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If es.Count &gt; 0 Then</SourceLine>
+   <SourceLine>Return es</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>Var result(0) As FKElement</SourceLine>
+   <SourceLine>Return result</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>es() as FKElement</ItemParams>
+  <ItemResult>FKElement()</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Grow</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Increases the capacity of the array.</CodeDescription>
+  <PartID>1808476159</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Grow(minCapacity As Integer)</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Increases the capacity of the array.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter minCapacity: The desired minimum capacity.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var oldCapacity As Integer = queue.Count</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Double the size if small, else grow by 50%.</SourceLine>
+   <SourceLine>Var newCapacity As Integer = ArraysSupport.newLength(oldCapacity,</SourceLine>
+   <SourceLine>minCapacity - oldCapacity, /* minimum growth */</SourceLine>
+   <SourceLine>oldCapacity &lt; 64 ? oldCapacity + 2 : oldCapacity &gt;&gt; 1</SourceLine>
+   <SourceLine>/* preferred growth */);</SourceLine>
+   <SourceLine>queue = Arrays.copyOf(queue, newCapacity)</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>minCapacity As Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Note>
+  <ItemName>About</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>648456191</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>About</NoteLine>
+   <NoteLine>Ported from the OpenJDK implementation of a priority queue:</NoteLine>
+   <NoteLine>https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/PriorityQueue.java</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>An unbounded priority Queue queue based on a priority heap.</NoteLine>
+   <NoteLine>The elements of the priority queue are ordered according to their</NoteLine>
+   <NoteLine>Comparable natural ordering, or by a Comparator provided at queue construction time, </NoteLine>
+   <NoteLine>depending on which constructor is used. A priority queue does not permit Nil elements.</NoteLine>
+   <NoteLine>A priority queue relying on natural ordering also does not permit insertion of non-comparable </NoteLine>
+   <NoteLine>objects (doing so may result in an `IllegalCastException`).</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>The _head_ of this queue is the _least_ element with respect to the specified ordering.  </NoteLine>
+   <NoteLine>If multiple elements are tied for least value, the head is one of those elements -- ties are</NoteLine>
+   <NoteLine>broken arbitrarily. The queue retrieval operations `Poll`, `Remove`, `Peek}`, and `Element` access the</NoteLine>
+   <NoteLine>element at the head of the queue.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>A priority queue is unbounded, but has an internal _capacity_ governing the size of an array used </NoteLine>
+   <NoteLine>to store the elements on the queue.  It is always at least as large as the queue</NoteLine>
+   <NoteLine>size. As elements are added to a priority queue, its capacity grows automatically.  </NoteLine>
+   <NoteLine>The details of the growth policy are not specified.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>This class and its iterator implement all of the _optional_ methods of the `Collection` and</NoteLine>
+   <NoteLine>`Iterator` interfaces. The `Iterator` provided in method `Iterator` and the `Spliterator` provided </NoteLine>
+   <NoteLine>in method `Sspliterator` are _not_ guaranteed to traverse the elements of</NoteLine>
+   <NoteLine>the priority queue in any particular order. If you need ordered traversal, consider </NoteLine>
+   <NoteLine>using `Arrays.Sort(pq.toArray)`.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>**Note that this implementation is not synchronized.**</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Multiple threads should not access a `FKPriorityQueue` instance concurrently if any of the threads </NoteLine>
+   <NoteLine>modifies the queue.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Implementation note: this implementation provides O(log(n)) time for the enqueuing and dequeuing methods</NoteLine>
+   <NoteLine>`Offer`, `Poll`, `Remove` and `Add`); linear time for the `Remove(Object)` and `Contains(Object)`</NoteLine>
+   <NoteLine>methods and constant time for the retrieval methods `Peek, `Element`, and `Size`.</NoteLine>
+   <NoteLine></NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
+ <Property>
+  <ItemName>Queue()</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>646289407</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Queue() As FKElement</SourceLine>
+   <SourceLine>The priority queue is represented as a balanced binary heap: the two</SourceLine>
+   <SourceLine>children of queue(n) are queue(2*n+1) and queue(2*(n+1)). The</SourceLine>
+   <SourceLine>priority queue is ordered by comparator, or by the elements'</SourceLine>
+   <SourceLine>natural ordering, if `Comparator` is Nil: For each node n in the</SourceLine>
+   <SourceLine>heap and each descendant d of n, n &lt;= d.  he element with the</SourceLine>
+   <SourceLine>lowest value is in queue[0], assuming the queue is nonempty.</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>Queue() As FKElement</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+ </Property>
+ <Property>
+  <ItemName>Size</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>The number of elements in the priority queue.</CodeDescription>
+  <PartID>672718847</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Size As Integer</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>Size As Integer</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+ </Property>
+ <Property>
+  <ItemName>ModCount</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>The number of times this priority queue has been structurally modified.</CodeDescription>
+  <PartID>279920639</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>ModCount As Integer</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>ModCount As Integer</ItemDeclaration>
+  <ItemFlags>1</ItemFlags>
+  <IsShared>0</IsShared>
+ </Property>
+ <Property>
+  <ItemName>Comparator</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>The comparator, or Nil if priority queue uses elements natural ordering.</CodeDescription>
+  <PartID>1934145535</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Comparator As FKComparator</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>Comparator As FKComparator</ItemDeclaration>
+  <ItemFlags>1</ItemFlags>
+  <IsShared>0</IsShared>
+ </Property>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Size</ObjName>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+ <Constant>
+  <ItemName>DEFAULT_INITIAL_CAPACITY</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>430483455</PartID>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemType>2</ItemType>
+  <ItemDef>11</ItemDef>
+  <ItemFlags>33</ItemFlags>
+ </Constant>
+</block>
+</RBProject>
