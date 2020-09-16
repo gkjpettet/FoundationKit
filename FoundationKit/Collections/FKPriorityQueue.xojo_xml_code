@@ -451,7 +451,6 @@
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>#Pragma Error "TODO"</SourceLine>
-   <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
@@ -638,7 +637,7 @@
    <ItemType>Integer</ItemType>
   </ViewProperty>
   <ViewProperty>
-   <ObjName>mSize</ObjName>
+   <ObjName>Size</ObjName>
    <PropertyGroup>Behavior</PropertyGroup>
    <ItemType>Integer</ItemType>
   </ViewProperty>

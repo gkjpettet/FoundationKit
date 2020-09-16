@@ -2,11 +2,30 @@
 <RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
 <block type="Module" ID="2088204287">
  <ObjName>FKCollectionElement</ObjName>
- <ObjContainerID>0</ObjContainerID>
+ <ObjContainerID>60385279</ObjContainerID>
  <IsClass>1</IsClass>
  <ItemFlags>1</ItemFlags>
  <IsInterface>1</IsInterface>
  <Compatibility></Compatibility>
+ <Method>
+  <ItemName>CompareTo</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Compares this object with the specified object for order.</CodeDescription>
+  <PartID>1332166655</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CompareTo(other As Variant) As Integer</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>other As Variant</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
  <Note>
   <ItemName>About</ItemName>
   <Compatibility></Compatibility>
@@ -17,6 +36,14 @@
    <NoteLine>About</NoteLine>
    <NoteLine>Classes implementing this interface are able to be be elements in FoundationKit</NoteLine>
    <NoteLine>collections.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>=====================</NoteLine>
+   <NoteLine>CompareTo()</NoteLine>
+   <NoteLine>Compares this object with the specified object for order. </NoteLine>
+   <NoteLine>Returns a negative integer, zero, or a positive integer as this object is less than, </NoteLine>
+   <NoteLine>equal to, or greater than the specified object.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Raises a NilObjectException if the specified object is Nil</NoteLine>
    <NoteLine></NoteLine>
   </ItemSource>
   <ItemFlags>0</ItemFlags>
