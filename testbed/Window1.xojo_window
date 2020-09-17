@@ -28,5 +28,12 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Event
+		Sub Open()
+		  
+		End Sub
+	#tag EndEvent
+
+
 #tag EndWindowCode
 

@@ -2,7 +2,7 @@
 <RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
 <block type="Module" ID="2400255">
  <ObjName>FKPriorityQueue</ObjName>
- <ObjContainerID>60385279</ObjContainerID>
+ <ObjContainerID>0</ObjContainerID>
  <IsClass>1</IsClass>
  <ItemFlags>1</ItemFlags>
  <IsInterface>0</IsInterface>
@@ -111,7 +111,13 @@
    <SourceLine></SourceLine>
    <SourceLine>If initialCapacity &lt; 1 Then Raise New InvalidArgumentException</SourceLine>
    <SourceLine>Self.Queue.ResizeTo(initialCapacity - 1)</SourceLine>
-   <SourceLine>Self.Comparator = comparator</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If comparator &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>#Pragma Warning "TODO: Implement custom comparators"</SourceLine>
+   <SourceLine>Raise New UnsupportedOperationException("Custom comparators are not not implemented")</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>mComparator = comparator</SourceLine>
+   <SourceLine>End If</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Sub</SourceLine>
   </ItemSource>
@@ -480,6 +486,299 @@
   <ItemParams></ItemParams>
   <ItemResult>FKComparable</ItemResult>
  </Method>
+ <Method>
+  <ItemName>RemoveAt</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Removes the ith element from queue.</CodeDescription>
+  <PartID>98041855</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function RemoveAt(i As Integer) As FKComparable</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Removes the ith element from queue.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter i: The index of the element to remove.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Notes:</SourceLine>
+   <SourceLine>' Normally this method leaves the elements at up to i-1, inclusive, untouched. </SourceLine>
+   <SourceLine>' Under these circumstances, it returns Nil. </SourceLine>
+   <SourceLine>' Occasionally, in order to maintain the heap invariant, it must swap a later </SourceLine>
+   <SourceLine>' element of the list with one earlier than `i`. Under these circumstances, </SourceLine>
+   <SourceLine>' this method returns the element that was previously at the end of the list and </SourceLine>
+   <SourceLine>' is now at some position before `i`. This fact is used by iterator.Remove so as to</SourceLine>
+   <SourceLine>' avoid missing traversing elements.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var es() As FKComparable = Queue</SourceLine>
+   <SourceLine>ModCount = ModCount + 1</SourceLine>
+   <SourceLine>mSize = mSize - 1</SourceLine>
+   <SourceLine>If mSize = i Then</SourceLine>
+   <SourceLine>// Removed last element.</SourceLine>
+   <SourceLine>es(i) = Nil</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>Var moved As FKComparable = es(mSize)</SourceLine>
+   <SourceLine>es(mSize) = Nil</SourceLine>
+   <SourceLine>SiftDown(i, moved)</SourceLine>
+   <SourceLine>If es(i) = moved Then</SourceLine>
+   <SourceLine>SiftUp(i, moved)</SourceLine>
+   <SourceLine>If es(i) &lt;&gt; moved Then Return moved</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return Nil</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>i As Integer</ItemParams>
+  <ItemResult>FKComparable</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SiftUp</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Inserts item x at position k, maintaining heap invariant by promoting x up the tree until it is &gt;= to its parent, or is the root.</CodeDescription>
+  <PartID>1439354879</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub SiftUp(k As Integer, x As FKComparable)</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Inserts item x at position k, maintaining heap invariant by promoting x up the tree </SourceLine>
+   <SourceLine>' until it is &gt;= to its parent, or is the root.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter k: The position to fill.</SourceLine>
+   <SourceLine>' - Parameter x: The item to insert.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Notes:</SourceLine>
+   <SourceLine>' To simplify and speed up coercions and comparisons, the FKComparable and FKComparator </SourceLine>
+   <SourceLine>' versions are separated into different methods that are otherwise identical.</SourceLine>
+   <SourceLine>' (Similarly for `SiftDown`).</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If Comparator &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>SiftUpUsingComparator(k, x, queue, comparator)</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>SiftUpComparable(k, x, queue)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>k As Integer, x As FKComparable</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SiftUpComparable</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>2050465791</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Shared Sub SiftUpComparable(k As Integer, x As FKComparable, es() As FKComparable)</SourceLine>
+   <SourceLine>Var key As FKComparable = x</SourceLine>
+   <SourceLine>While k &gt; 0</SourceLine>
+   <SourceLine>Var parent As Integer = MathsKit.RShiftU32(k - 1, 1)</SourceLine>
+   <SourceLine>Var e As FKComparable = es(parent)</SourceLine>
+   <SourceLine>If key.CompareTo(e) &gt;= 0 Then Exit</SourceLine>
+   <SourceLine>es(k) = e</SourceLine>
+   <SourceLine>k = parent</SourceLine>
+   <SourceLine>Wend</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>es(k) = key</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>1</IsShared>
+  <ItemParams>k As Integer, x As FKComparable, es() As FKComparable</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SiftUpUsingComparator</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>41322495</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Shared Sub SiftUpUsingComparator(k As Integer, x As FKComparable, es() As FKComparable, cmp As FKComparator)</SourceLine>
+   <SourceLine>#Pragma Warning "TODO: Implement sifting up with a custom comparator"</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Raise New UnsupportedOperationException("Sifting up with a custom comparator " + _</SourceLine>
+   <SourceLine>"is not yet implemented")</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>1</IsShared>
+  <ItemParams>k As Integer, x As FKComparable, es() As FKComparable, cmp As FKComparator</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SiftDown</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Inserts item x at position k, maintaining heap invariant by demoting x down the tree repeatedly until it is &lt;= to its children or is a leaf.</CodeDescription>
+  <PartID>1086212095</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub SiftDown(k As Integer, x As FKComparable)</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Inserts item x at position k, maintaining heap invariant by demoting x down the tree </SourceLine>
+   <SourceLine>' repeatedly until it is &lt;= to its children or is a leaf.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter k: The position to fill.</SourceLine>
+   <SourceLine>' - Parameter x: The item to insert.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If Comparator &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>SiftDownUsingComparator(k, x, Queue, mSize, Comparator)</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>SiftDownComparable(k, x, Queue, mSize)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>k As Integer, x As FKComparable</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SiftDownComparable</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>799100927</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Shared Sub SiftDownComparable(k As Integer, x As FKComparable, es() As FKComparable, n As Integer)</SourceLine>
+   <SourceLine>Var key As FKComparable = x</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var half As Integer = MathsKit.RShiftU32(n, 1)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Loop while a non-leaf.</SourceLine>
+   <SourceLine>While k &lt; half</SourceLine>
+   <SourceLine>Var child As Integer = MathsKit.LShift32(k, 1) + 1 // Assume left child is least.</SourceLine>
+   <SourceLine>Var c As FKComparable = es(child)</SourceLine>
+   <SourceLine>Var right As Integer = child + 1</SourceLine>
+   <SourceLine>If right &lt; n And c.CompareTo(es(right)) &gt; 0 Then</SourceLine>
+   <SourceLine>child = right</SourceLine>
+   <SourceLine>c = es(child)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>If key.CompareTo(c) &lt;= 0 Then Exit</SourceLine>
+   <SourceLine>es(k) = c</SourceLine>
+   <SourceLine>k = child</SourceLine>
+   <SourceLine>Wend</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>es(k) = key</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>1</IsShared>
+  <ItemParams>k As Integer, x As FKComparable, es() As FKComparable, n As Integer</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>SiftDownUsingComparator</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>675092479</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Shared Sub SiftDownUsingComparator(k As Integer, x As FKComparable, es() As FKComparable, n As Integer, cmp As FKComparator)</SourceLine>
+   <SourceLine>#Pragma Warning "TODO: Implement sifting down with a custom comparator"</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Raise New UnsupportedOperationException("Sifting down with a custom comparator " + _</SourceLine>
+   <SourceLine>"is not yet implemented")</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>1</IsShared>
+  <ItemParams>k As Integer, x As FKComparable, es() As FKComparable, n As Integer, cmp As FKComparator</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Heapify</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Establishes the heap invariant in the entire tree, assuming nothing about the order of the elements prior to the call.</CodeDescription>
+  <PartID>1044576255</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Heapify()</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Establishes the heap invariant in the entire tree, assuming nothing about the </SourceLine>
+   <SourceLine>' order of the elements prior to the call.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Notes:</SourceLine>
+   <SourceLine>' This classic algorithm due to Floyd (1964) is known to be O(size).</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var es() As FKComparable = Queue</SourceLine>
+   <SourceLine>Var n As Integer = size</SourceLine>
+   <SourceLine>Var i As Integer = MathsKit.RShiftU32(n, 1) - 1</SourceLine>
+   <SourceLine>If Comparator Is Nil Then</SourceLine>
+   <SourceLine>While i &gt;= 0</SourceLine>
+   <SourceLine>SiftDownComparable(i, es(i), es, n)</SourceLine>
+   <SourceLine>i = i - 1</SourceLine>
+   <SourceLine>Wend</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>While i &gt;= 0</SourceLine>
+   <SourceLine>SiftDownUsingComparator(i, es(i), es, n, mComparator)</SourceLine>
+   <SourceLine>i = i - 1</SourceLine>
+   <SourceLine>Wend</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>IsEmpty</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns True if this queue is empty or False if it has elements.</CodeDescription>
+  <PartID>320382975</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function IsEmpty() As Boolean</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Returns True if this queue is empty or False if it has elements.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return mSize = 0</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
  <Note>
   <ItemName>About</ItemName>
   <Compatibility></Compatibility>
@@ -488,7 +787,7 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <NoteLine>About</NoteLine>
-   <NoteLine>Ported from the OpenJDK implementation of a priority queue:</NoteLine>
+   <NoteLine>A partial implementation of the OpenJDK PriorityQueue class.</NoteLine>
    <NoteLine>https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/PriorityQueue.java</NoteLine>
    <NoteLine></NoteLine>
    <NoteLine>An unbounded priority Queue queue based on a priority heap.</NoteLine>
@@ -507,14 +806,6 @@
    <NoteLine>to store the elements on the queue.  It is always at least as large as the queue</NoteLine>
    <NoteLine>size. As elements are added to a priority queue, its capacity grows automatically.  </NoteLine>
    <NoteLine>The details of the growth policy are not specified.</NoteLine>
-   <NoteLine></NoteLine>
-   <NoteLine>This class and its iterator implement all of the _optional_ methods of the `Collection` and</NoteLine>
-   <NoteLine>`Iterator` interfaces. The `Iterator` provided in method `Iterator` and the `Spliterator` provided </NoteLine>
-   <NoteLine>in method `Sspliterator` are _not_ guaranteed to traverse the elements of</NoteLine>
-   <NoteLine>the priority queue in any particular order. If you need ordered traversal, consider </NoteLine>
-   <NoteLine>using `Arrays.Sort(pq.toArray)`.</NoteLine>
-   <NoteLine></NoteLine>
-   <NoteLine>**Note that this implementation is not synchronized.**</NoteLine>
    <NoteLine></NoteLine>
    <NoteLine>Multiple threads should not access a `FKPriorityQueue` instance concurrently if any of the threads </NoteLine>
    <NoteLine>modifies the queue.</NoteLine>
@@ -580,19 +871,19 @@
   <IsShared>0</IsShared>
  </Property>
  <Property>
-  <ItemName>Comparator</ItemName>
+  <ItemName>mComparator</ItemName>
   <Compatibility></Compatibility>
   <Visible>1</Visible>
   <CodeDescription>The comparator, or Nil if priority queue uses elements natural ordering.</CodeDescription>
   <PartID>1934145535</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Comparator As FKComparator</SourceLine>
+   <SourceLine>mComparator As FKComparator</SourceLine>
    <SourceLine></SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
-  <ItemDeclaration>Comparator As FKComparator</ItemDeclaration>
-  <ItemFlags>1</ItemFlags>
+  <ItemDeclaration>mComparator As FKComparator</ItemDeclaration>
+  <ItemFlags>33</ItemFlags>
   <IsShared>0</IsShared>
  </Property>
  <Property>
@@ -619,6 +910,34 @@
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Get</SourceLine>
    <SourceLine>Return mSize</SourceLine>
+   <SourceLine>End Get</SourceLine>
+  </GetAccessor>
+ </Property>
+ <Property>
+  <ItemName>Comparator</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>The comparator, or Nil if priority queue uses elements natural ordering.</CodeDescription>
+  <PartID>1677903871</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Comparator As FKComparator</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>Comparator As FKComparator</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <SetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Set</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Set</SourceLine>
+  </SetAccessor>
+  <GetAccessor>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Get</SourceLine>
+   <SourceLine>Return mComparator</SourceLine>
    <SourceLine>End Get</SourceLine>
   </GetAccessor>
  </Property>
