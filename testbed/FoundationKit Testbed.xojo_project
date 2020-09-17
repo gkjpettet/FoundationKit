@@ -15,6 +15,7 @@ Class=FKPriorityQueue;../FoundationKit/Collections/FKPriorityQueue.xojo_xml_code
 Class=FKArraysSupport;../FoundationKit/Collections/FKArraysSupport.xojo_xml_code;&h000000001C1A9FFF;&h00000000039967FF;false
 Class=FKArrays;../FoundationKit/Collections/FKArrays.xojo_xml_code;&h00000000798EF7FF;&h00000000039967FF;false
 Interface=FKComparable;../FoundationKit/Collections/FKComparable.xojo_xml_code;&h000000007CC7C7FF;&h00000000039967FF;false
+Class=FKArrayDeque;../FoundationKit/Collections/FKArrayDeque.xojo_xml_code;&h000000001E3237FF;&h00000000039967FF;false
 DefaultWindow=Window1
 AppMenuBar=MainMenuBar
 MajorVersion=1
