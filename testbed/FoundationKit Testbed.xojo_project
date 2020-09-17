@@ -7,6 +7,7 @@ Window=Window1;Window1.xojo_window;&h0000000055DBB7FF;&h0000000000000000;false
 MenuBar=MainMenuBar;MainMenuBar.xojo_menu;&h000000000B29C7FF;&h0000000000000000;false
 BuildSteps=Build Automation;Build Automation.xojo_code;&h0000000001E8D7FF;&h0000000000000000;false
 Folder=FoundationKit;FoundationKit;&h000000000422AFFF;&h0000000000000000;false
+Module=FoundationKit;../FoundationKit/FoundationKit.xojo_xml_code;&h0000000066217FFF;&h000000000422AFFF;false
 Module=MathsKit;../../MathsKit/MathsKit.xojo_xml_code;&h0000000017179FFF;&h0000000000000000;false
 Folder=Collections;FoundationKit/Collections;&h00000000039967FF;&h000000000422AFFF;false
 Interface=FKComparator;../FoundationKit/Collections/FKComparator.xojo_xml_code;&h000000004AB40FFF;&h00000000039967FF;false

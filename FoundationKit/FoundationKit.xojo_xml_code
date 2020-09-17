@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
+<block type="Module" ID="1101547519">
+ <ObjName>FoundationKit</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>0</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>GetMethod</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns an invokable method with the specified name on the passed object or Nil if that method  does not exist.</CodeDescription>
+  <PartID>1358811135</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function GetMethod(obj as Object, methodName as String) As Introspection.MethodInfo</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Returns an invokable method with the specified name on the passed object or Nil if that method </SourceLine>
+   <SourceLine>' does not exist.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter obj: The object to query.</SourceLine>
+   <SourceLine>' - Parameter methodName: The name of the method to retrieve.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Returns: An invokable MethodInfo object if the method exists or Nil if it doesn't</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Notes:</SourceLine>
+   <SourceLine>' Based on code by Will Shank: </SourceLine>
+   <SourceLine>' https://forum.xojo.com/t/execute-code-if-method-is-available/18662/5</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var objMethods() As Introspection.MethodInfo = Introspection.GetType(obj).GetMethods</SourceLine>
+   <SourceLine>For Each method As Introspection.MethodInfo In objMethods</SourceLine>
+   <SourceLine>If method.Name = methodName Then Return method</SourceLine>
+   <SourceLine>Next method</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return Nil</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>1</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>obj as Object, methodName as String</ItemParams>
+  <ItemResult>Introspection.MethodInfo</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>HasMethodNamed</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns True if the passed object has a method with the specified name.</CodeDescription>
+  <PartID>2117877759</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function HasMethodNamed(obj as Object, methodName as String) As Boolean</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Returns True if the passed object has a method with the specified name.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter obj: The object to query.</SourceLine>
+   <SourceLine>' - Parameter methodName: The name of the method.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var objMethods() As Introspection.MethodInfo = Introspection.GetType(obj).GetMethods</SourceLine>
+   <SourceLine>For Each method As Introspection.MethodInfo In objMethods</SourceLine>
+   <SourceLine>If method.Name = methodName Then Return True</SourceLine>
+   <SourceLine>Next method</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>1</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>obj as Object, methodName as String</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>
