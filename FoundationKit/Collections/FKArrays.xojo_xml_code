@@ -2,7 +2,7 @@
 <RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
 <block type="Module" ID="20031487">
  <ObjName>FKArrays</ObjName>
- <ObjContainerID>0</ObjContainerID>
+ <ObjContainerID>60385279</ObjContainerID>
  <IsClass>1</IsClass>
  <ItemFlags>1</ItemFlags>
  <IsInterface>0</IsInterface>
@@ -36,7 +36,7 @@
   <PartID>1883232255</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Shared Function CopyOf(original() As FKCollectionElement, newLength As Integer) As FKCollectionElement()</SourceLine>
+   <SourceLine>Shared Function CopyOf(original() As FKComparable, newLength As Integer) As FKComparable()</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Copies the specified array, truncating or padding with Nils (if necessary) so the </SourceLine>
    <SourceLine>' copy has the specified length.</SourceLine>
@@ -59,7 +59,7 @@
    <SourceLine>Raise New OutOfBoundsException("`newLength` must be &gt;= 0")</SourceLine>
    <SourceLine>End If</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Var result() As FKCollectionElement</SourceLine>
+   <SourceLine>Var result() As FKComparable</SourceLine>
    <SourceLine>result.ResizeTo(newLength - 1)</SourceLine>
    <SourceLine>Var limit As Integer = If(newLength &lt;= original.Count, newLength, original.LastRowIndex)</SourceLine>
    <SourceLine>For i As Integer = 0 To limit</SourceLine>
@@ -74,8 +74,8 @@
   <AliasName></AliasName>
   <ItemFlags>0</ItemFlags>
   <IsShared>1</IsShared>
-  <ItemParams>original() As FKCollectionElement, newLength As Integer</ItemParams>
-  <ItemResult>FKCollectionElement()</ItemResult>
+  <ItemParams>original() As FKComparable, newLength As Integer</ItemParams>
+  <ItemResult>FKComparable()</ItemResult>
  </Method>
  <Note>
   <ItemName>About</ItemName>

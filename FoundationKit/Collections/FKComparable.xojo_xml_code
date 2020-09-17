@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
-<block type="Module" ID="2088204287">
- <ObjName>FKCollectionElement</ObjName>
+<block type="Module" ID="493885439">
+ <ObjName>FKComparable</ObjName>
  <ObjContainerID>60385279</ObjContainerID>
  <IsClass>1</IsClass>
  <ItemFlags>1</ItemFlags>
@@ -12,7 +12,7 @@
   <Compatibility></Compatibility>
   <Visible>1</Visible>
   <CodeDescription>Compares this object with the specified object for order.</CodeDescription>
-  <PartID>1332166655</PartID>
+  <PartID>596013055</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function CompareTo(other As Variant) As Integer</SourceLine>
@@ -30,12 +30,12 @@
   <ItemName>About</ItemName>
   <Compatibility></Compatibility>
   <Visible>1</Visible>
-  <PartID>890857471</PartID>
+  <PartID>1918081023</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <NoteLine>About</NoteLine>
-   <NoteLine>Classes implementing this interface are able to be be elements in FoundationKit</NoteLine>
-   <NoteLine>collections.</NoteLine>
+   <NoteLine>This interface provides a method for comparing one object against another.</NoteLine>
+   <NoteLine>All members of FoundationKit collections should implement this interface.</NoteLine>
    <NoteLine></NoteLine>
    <NoteLine>=====================</NoteLine>
    <NoteLine>CompareTo()</NoteLine>

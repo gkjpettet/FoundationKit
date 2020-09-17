@@ -130,7 +130,7 @@
   <PartID>124805119</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function EnsureNonEmpty(es() as FKCollectionElement) As FKCollectionElement()</SourceLine>
+   <SourceLine>Function EnsureNonEmpty(es() as FKComparable) As FKComparable()</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Ensures that Queue(0) exists, helping `Peek` and `Poll`.</SourceLine>
    <SourceLine>'</SourceLine>
@@ -142,7 +142,7 @@
    <SourceLine>If es.Count &gt; 0 Then</SourceLine>
    <SourceLine>Return es</SourceLine>
    <SourceLine>Else</SourceLine>
-   <SourceLine>Var result(0) As FKCollectionElement</SourceLine>
+   <SourceLine>Var result(0) As FKComparable</SourceLine>
    <SourceLine>Return result</SourceLine>
    <SourceLine>End If</SourceLine>
    <SourceLine></SourceLine>
@@ -152,8 +152,8 @@
   <AliasName></AliasName>
   <ItemFlags>33</ItemFlags>
   <IsShared>0</IsShared>
-  <ItemParams>es() as FKCollectionElement</ItemParams>
-  <ItemResult>FKCollectionElement()</ItemResult>
+  <ItemParams>es() as FKComparable</ItemParams>
+  <ItemResult>FKComparable()</ItemResult>
  </Method>
  <Method>
   <ItemName>Grow</ItemName>
@@ -197,7 +197,7 @@
   <PartID>655028223</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function Add(e As FKCollectionElement) As Boolean</SourceLine>
+   <SourceLine>Function Add(e As FKComparable) As Boolean</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Inserts the specified element into this priority queue, if permitted.</SourceLine>
    <SourceLine>'</SourceLine>
@@ -214,7 +214,7 @@
   <AliasName></AliasName>
   <ItemFlags>0</ItemFlags>
   <IsShared>0</IsShared>
-  <ItemParams>e As FKCollectionElement</ItemParams>
+  <ItemParams>e As FKComparable</ItemParams>
   <ItemResult>Boolean</ItemResult>
  </Method>
  <Method>
@@ -225,7 +225,7 @@
   <PartID>857980927</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function Offer(e As FKCollectionElement) As Boolean</SourceLine>
+   <SourceLine>Function Offer(e As FKComparable) As Boolean</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Inserts the specified element into this queue if it is possible to do so immediately </SourceLine>
    <SourceLine>' without violating capacity restrictions.</SourceLine>
@@ -256,7 +256,7 @@
   <AliasName></AliasName>
   <ItemFlags>0</ItemFlags>
   <IsShared>0</IsShared>
-  <ItemParams>e As FKCollectionElement</ItemParams>
+  <ItemParams>e As FKComparable</ItemParams>
   <ItemResult>Boolean</ItemResult>
  </Method>
  <Method>
@@ -267,7 +267,7 @@
   <PartID>1968197631</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function Peek() As FKCollectionElement</SourceLine>
+   <SourceLine>Function Peek() As FKComparable</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Retrieves, but does not remove, the head of this queue, or returns Nil if this </SourceLine>
    <SourceLine>' queue is empty.</SourceLine>
@@ -284,7 +284,7 @@
   <ItemFlags>0</ItemFlags>
   <IsShared>0</IsShared>
   <ItemParams></ItemParams>
-  <ItemResult>FKCollectionElement</ItemResult>
+  <ItemResult>FKComparable</ItemResult>
  </Method>
  <Method>
   <ItemName>IndexOf</ItemName>
@@ -294,7 +294,7 @@
   <PartID>1988087807</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function IndexOf(obj As FKCollectionElement) As Integer</SourceLine>
+   <SourceLine>Function IndexOf(obj As FKComparable) As Integer</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Returns the index in the queue of the passed object or -1 if it's not present.</SourceLine>
    <SourceLine>'</SourceLine>
@@ -318,7 +318,7 @@
   <AliasName></AliasName>
   <ItemFlags>33</ItemFlags>
   <IsShared>0</IsShared>
-  <ItemParams>obj As FKCollectionElement</ItemParams>
+  <ItemParams>obj As FKComparable</ItemParams>
   <ItemResult>Integer</ItemResult>
  </Method>
  <Method>
@@ -329,7 +329,7 @@
   <PartID>1442248703</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function Remove(obj As FKCollectionElement) As Boolean</SourceLine>
+   <SourceLine>Function Remove(obj As FKComparable) As Boolean</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Removes a single instance of the specified element from this queue, if it is present.</SourceLine>
    <SourceLine>'</SourceLine>
@@ -353,7 +353,7 @@
   <AliasName></AliasName>
   <ItemFlags>0</ItemFlags>
   <IsShared>0</IsShared>
-  <ItemParams>obj As FKCollectionElement</ItemParams>
+  <ItemParams>obj As FKComparable</ItemParams>
   <ItemResult>Boolean</ItemResult>
  </Method>
  <Method>
@@ -364,7 +364,7 @@
   <PartID>1056483327</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function Contains(obj As FKCollectionElement) As Boolean</SourceLine>
+   <SourceLine>Function Contains(obj As FKComparable) As Boolean</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Returns True if this queue contains the specified element.</SourceLine>
    <SourceLine>'</SourceLine>
@@ -382,7 +382,7 @@
   <AliasName></AliasName>
   <ItemFlags>0</ItemFlags>
   <IsShared>0</IsShared>
-  <ItemParams>obj As FKCollectionElement</ItemParams>
+  <ItemParams>obj As FKComparable</ItemParams>
   <ItemResult>Boolean</ItemResult>
  </Method>
  <Method>
@@ -393,7 +393,7 @@
   <PartID>1887557631</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function ToArray() As FKCollectionElement()</SourceLine>
+   <SourceLine>Function ToArray() As FKComparable()</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Returns a new array containing all of the elements in this queue. </SourceLine>
    <SourceLine>' The elements are in no particular order.</SourceLine>
@@ -408,7 +408,7 @@
   <ItemFlags>0</ItemFlags>
   <IsShared>0</IsShared>
   <ItemParams></ItemParams>
-  <ItemResult>FKCollectionElement()</ItemResult>
+  <ItemResult>FKComparable()</ItemResult>
  </Method>
  <Method>
   <ItemName>Clear</ItemName>
@@ -445,12 +445,32 @@
   <PartID>2090745855</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function Poll() As FKCollectionElement</SourceLine>
+   <SourceLine>Function Poll() As FKComparable</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine>' Retrieves and removes the head of this queue, or returns Nil if this queue is empty.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>#Pragma Error "TODO"</SourceLine>
+   <SourceLine>Var es() As FKComparable</SourceLine>
+   <SourceLine>Var result As FKComparable</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>es = Queue</SourceLine>
+   <SourceLine>If es(0) &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>ModCount = ModCount + 1</SourceLine>
+   <SourceLine>mSize = mSize - 1</SourceLine>
+   <SourceLine>Var n As Integer = Size</SourceLine>
+   <SourceLine>Var x As FKComparable = es(n)</SourceLine>
+   <SourceLine>es(n) = Nil</SourceLine>
+   <SourceLine>If n &gt; 0 Then</SourceLine>
+   <SourceLine>If Comparator Is Nil Then</SourceLine>
+   <SourceLine>SiftDownComparable(0, x, es, n)</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>SiftDownUsingComparator(0, x, es, n, Comparator)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return result</SourceLine>
+   <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
@@ -458,7 +478,7 @@
   <ItemFlags>0</ItemFlags>
   <IsShared>0</IsShared>
   <ItemParams></ItemParams>
-  <ItemResult>FKCollectionElement</ItemResult>
+  <ItemResult>FKComparable</ItemResult>
  </Method>
  <Note>
   <ItemName>About</ItemName>
@@ -513,7 +533,7 @@
   <PartID>646289407</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Queue() As FKCollectionElement</SourceLine>
+   <SourceLine>Queue() As FKComparable</SourceLine>
    <SourceLine>The priority queue is represented as a balanced binary heap: the two</SourceLine>
    <SourceLine>children of queue(n) are queue(2*n+1) and queue(2*(n+1)). The</SourceLine>
    <SourceLine>priority queue is ordered by comparator, or by the elements'</SourceLine>
@@ -523,7 +543,7 @@
    <SourceLine></SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
-  <ItemDeclaration>Queue() As FKCollectionElement</ItemDeclaration>
+  <ItemDeclaration>Queue() As FKComparable</ItemDeclaration>
   <ItemFlags>0</ItemFlags>
   <IsShared>0</IsShared>
  </Property>
