@@ -610,6 +610,11 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Shared Sub SiftUpUsingComparator(k As Integer, x As FKComparable, es() As FKComparable, cmp As FKComparator)</SourceLine>
+   <SourceLine>#Pragma Unused k</SourceLine>
+   <SourceLine>#Pragma Unused x</SourceLine>
+   <SourceLine>#Pragma Unused es</SourceLine>
+   <SourceLine>#Pragma Unused cmp</SourceLine>
+   <SourceLine></SourceLine>
    <SourceLine>#Pragma Warning "TODO: Implement sifting up with a custom comparator"</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>Raise New UnsupportedOperationException("Sifting up with a custom comparator " + _</SourceLine>
@@ -701,6 +706,12 @@
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Shared Sub SiftDownUsingComparator(k As Integer, x As FKComparable, es() As FKComparable, n As Integer, cmp As FKComparator)</SourceLine>
+   <SourceLine>#Pragma Unused k</SourceLine>
+   <SourceLine>#Pragma Unused x</SourceLine>
+   <SourceLine>#Pragma Unused es</SourceLine>
+   <SourceLine>#Pragma Unused n</SourceLine>
+   <SourceLine>#Pragma Unused cmp</SourceLine>
+   <SourceLine></SourceLine>
    <SourceLine>#Pragma Warning "TODO: Implement sifting down with a custom comparator"</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>Raise New UnsupportedOperationException("Sifting down with a custom comparator " + _</SourceLine>
