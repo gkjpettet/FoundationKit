@@ -461,6 +461,7 @@
    <SourceLine></SourceLine>
    <SourceLine>es = Queue</SourceLine>
    <SourceLine>If es(0) &lt;&gt; Nil Then</SourceLine>
+   <SourceLine>result = es(0)</SourceLine>
    <SourceLine>ModCount = ModCount + 1</SourceLine>
    <SourceLine>mSize = mSize - 1</SourceLine>
    <SourceLine>Var n As Integer = Size</SourceLine>
