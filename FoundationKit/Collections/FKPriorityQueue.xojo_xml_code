@@ -113,7 +113,6 @@
    <SourceLine>Self.Queue.ResizeTo(initialCapacity - 1)</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>If comparator &lt;&gt; Nil Then</SourceLine>
-   <SourceLine>#Pragma Warning "TODO: Implement custom comparators"</SourceLine>
    <SourceLine>Raise New UnsupportedOperationException("Custom comparators are not not implemented")</SourceLine>
    <SourceLine>Else</SourceLine>
    <SourceLine>mComparator = comparator</SourceLine>
@@ -616,8 +615,6 @@
    <SourceLine>#Pragma Unused es</SourceLine>
    <SourceLine>#Pragma Unused cmp</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>#Pragma Warning "TODO: Implement sifting up with a custom comparator"</SourceLine>
-   <SourceLine></SourceLine>
    <SourceLine>Raise New UnsupportedOperationException("Sifting up with a custom comparator " + _</SourceLine>
    <SourceLine>"is not yet implemented")</SourceLine>
    <SourceLine></SourceLine>
@@ -712,8 +709,6 @@
    <SourceLine>#Pragma Unused es</SourceLine>
    <SourceLine>#Pragma Unused n</SourceLine>
    <SourceLine>#Pragma Unused cmp</SourceLine>
-   <SourceLine></SourceLine>
-   <SourceLine>#Pragma Warning "TODO: Implement sifting down with a custom comparator"</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>Raise New UnsupportedOperationException("Sifting down with a custom comparator " + _</SourceLine>
    <SourceLine>"is not yet implemented")</SourceLine>

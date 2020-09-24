@@ -2,8 +2,9 @@
 <RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
 <block type="Module" ID="493885439">
  <ObjName>FKComparable</ObjName>
- <ObjContainerID>0</ObjContainerID>
+ <ObjContainerID>1847701503</ObjContainerID>
  <IsClass>1</IsClass>
+ <Interfaces>FKStringable</Interfaces>
  <ItemFlags>1</ItemFlags>
  <IsInterface>1</IsInterface>
  <Compatibility></Compatibility>
