@@ -640,6 +640,21 @@
   <ItemParams>key As Variant, default As Variant</ItemParams>
   <ItemResult>Variant</ItemResult>
  </Method>
+ <Note>
+  <ItemName>About</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1305942015</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>About</NoteLine>
+   <NoteLine>This is an O(n) implementation of a hash map as we are traversing an array for most operations.</NoteLine>
+   <NoteLine>There is a lot of scope for optimising this. </NoteLine>
+   <NoteLine>Consider: https://craftinginterpreters.com/hash-tables.html</NoteLine>
+   <NoteLine></NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
  <Property>
   <ItemName>mData()</ItemName>
   <Compatibility></Compatibility>
