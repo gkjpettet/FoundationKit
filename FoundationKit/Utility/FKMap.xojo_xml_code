@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2020r1.1" FormatVersion="2" MinIDEVersion="20070100">
+<block type="Module" ID="1328590847">
+ <ObjName>FKMap</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>1</IsClass>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>1</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>Clear</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Removes all of the mappings from this map</CodeDescription>
+  <PartID>418328575</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Clear()</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ContainsKey</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns True if this map contains a mapping for the specified key.</CodeDescription>
+  <PartID>455243775</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ContainsKey(key As Variant) As Boolean</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ContainsValue</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns True if this map maps one or more keys to the specified value.</CodeDescription>
+  <PartID>910678015</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ContainsValue(value As Variant) As Boolean</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>value As Variant</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Get</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns the value to which the specified key is mapped, or Nil if this map contains no mapping for the key.</CodeDescription>
+  <PartID>743768063</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Get(key As Variant) As Variant</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant</ItemParams>
+  <ItemResult>Variant</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>GetOrDefault</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns the value to which the specified key is mapped, or `defaultValue` if this map contains no mapping for the key.</CodeDescription>
+  <PartID>1248548863</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function GetOrDefault(key As Variant, default As Variant) As Variant</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant, default As Variant</ItemParams>
+  <ItemResult>Variant</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>IsEmpty</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns True if this map contains no key-value mappings.</CodeDescription>
+  <PartID>2034472959</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function IsEmpty() As Boolean</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Put</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Associates a value with the specified key in this map. Returns the previous value associated with key, or Nil if there was no mapping for the key.</CodeDescription>
+  <PartID>542928895</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Put(key As Variant, value As Variant) As Variant</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant, value As Variant</ItemParams>
+  <ItemResult>Variant</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>PutAll</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Copies all of the mappings from the specified map to this map.</CodeDescription>
+  <PartID>1483206655</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub PutAll(m As FKMap)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>m As FKMap</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Method>
+  <ItemName>PutIfAbsent</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>If the specified key is not already associated with a value (or is mapped to Nil) associates it with the given value and returns Nil, else returns the current value.</CodeDescription>
+  <PartID>762466303</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function PutIfAbsent(key As Variant, value As Variant) As Variant</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant, value As Variant</ItemParams>
+  <ItemResult>Variant</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Remove</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Removes the mapping for a key from this map if it is present, returning or Nil (if not present).</CodeDescription>
+  <PartID>357449727</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Remove(key As Variant) As Variant</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant</ItemParams>
+  <ItemResult>Variant</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Remove</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Removes the entry for the specified key only if it is currently mapped to the specified value. Returns True if the value was removed.</CodeDescription>
+  <PartID>2114510847</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Remove(key As Variant, value As Variant) As Boolean</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant, value As Variant</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Replace</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Replaces the entry for the specified key only if it is currently mapped to some value. Returns the previous value or Nil if there was no mapping for the key.</CodeDescription>
+  <PartID>1021566975</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Replace(key As Variant, value As Variant) As Variant</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant, value As Variant</ItemParams>
+  <ItemResult>Variant</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Replace</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Replaces the entry for the specified key only if currently mapped to the specified value. Returns True if the value was replaced.</CodeDescription>
+  <PartID>31541247</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Replace(key As Variant, oldValue As Variant, newValue As Variant) As Boolean</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant, oldValue As Variant, newValue As Variant</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Size</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns the number of key-value mappings in this map.</CodeDescription>
+  <PartID>282595327</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Size() As Integer</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Values</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns an array of the values contained in this map.</CodeDescription>
+  <PartID>1976600575</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Values() As Variant()</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult>Variant()</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>HashCode</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns the hash code value for this map.</CodeDescription>
+  <PartID>855611391</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function HashCode() As Integer</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Put</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Associates a value with the specified key in this map.</CodeDescription>
+  <PartID>190121983</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Put(key As Variant, value As Variant)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant, value As Variant</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Note>
+  <ItemName>About</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>283412479</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <NoteLine>About</NoteLine>
+   <NoteLine>Clear()</NoteLine>
+   <NoteLine>- Removes all of the mappings from this map</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>ContainsKey(key As Variant) As Boolean</NoteLine>
+   <NoteLine>- Returns True if this map contains a mapping for the specified key.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>ContainsValue(value As Variant) As Boolean</NoteLine>
+   <NoteLine>- Returns True if this map maps one or more keys to the specified value.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Get(key As Variant) As Variant or Nil</NoteLine>
+   <NoteLine>- Returns the value to which the specified key is mapped, or Nil if this map contains no mapping for the key.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>GetOrDefault(key As Variant, defaultValue As Variant) As Variant</NoteLine>
+   <NoteLine>- Returns the value to which the specified key is mapped, or `defaultValue` if this </NoteLine>
+   <NoteLine>  map contains no mapping for the key.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>HashCode() As Integer</NoteLine>
+   <NoteLine>- Returns the hash code value for this map.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>IsEmpty() As Boolean</NoteLine>
+   <NoteLine>- Returns True if this map contains no key-value mappings.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Put(key As Variant, value As Variant) As Variant or Nil</NoteLine>
+   <NoteLine>- Associates the specified value with the specified key in this map.</NoteLine>
+   <NoteLine>  Returns the previous value associated with key, or Nil if there was no mapping for key.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Put(key As Variant, value As Variant)</NoteLine>
+   <NoteLine>- Associates the specified value with the specified key in this map.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>PutAll(m As FKMap)</NoteLine>
+   <NoteLine>- Copies all of the mappings from the specified map to this map.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>PutIfAbsent(key As Variant, value As Variant) As Variant or Nil</NoteLine>
+   <NoteLine>- If the specified key is not already associated with a value (or is mapped to Nil) associates it </NoteLine>
+   <NoteLine>  with the given value and returns Nil, else returns the current value.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Remove(key As Variant, value As Variant) As Boolean</NoteLine>
+   <NoteLine>- Removes the entry for the specified key only if it is currently mapped to the specified value. </NoteLine>
+   <NoteLine>  Returns True if the value was removed.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Remove(key As Variant) As Variant or Nil</NoteLine>
+   <NoteLine>- Removes the mapping for a key from this map if it is present, returning or Nil (if not present).</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Replace(key As Variant, oldValue As Variant, newValue As Variant) As Boolean</NoteLine>
+   <NoteLine>- Replaces the entry for the specified key only if currently mapped to the specified value. </NoteLine>
+   <NoteLine>  Returns True if the value was replaced.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Replace(key As Variant, value As Variant) As Variant or Nil</NoteLine>
+   <NoteLine>- Replaces the entry for the specified key only if it is currently mapped to some value. </NoteLine>
+   <NoteLine>  Returns the previous value or Nil if there was no mapping for the key.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Size() As Integer</NoteLine>
+   <NoteLine> - Returns the number of key-value mappings in this map.</NoteLine>
+   <NoteLine></NoteLine>
+   <NoteLine>Values() As Variant()</NoteLine>
+   <NoteLine>- Returns an array of the values contained in this map.</NoteLine>
+   <NoteLine></NoteLine>
+  </ItemSource>
+  <ItemFlags>0</ItemFlags>
+ </Note>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>
