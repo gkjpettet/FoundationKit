@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RBProject version="2020r1.1" FormatVersion="2" MinIDEVersion="20070100">
+<block type="Module" ID="774481919">
+ <ObjName>FKPair</ObjName>
+ <ObjContainerID>0</ObjContainerID>
+ <IsClass>1</IsClass>
+ <Interfaces>FKComparable, FKStringable</Interfaces>
+ <ItemFlags>1</ItemFlags>
+ <IsInterface>0</IsInterface>
+ <Compatibility></Compatibility>
+ <Method>
+  <ItemName>CompareTo</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>236363775</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function CompareTo(other As Variant) As Integer</SourceLine>
+   <SourceLine>// Part of the FKComparable interface.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If Self.Equals(other) Then</SourceLine>
+   <SourceLine>Return 0</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>Return -1</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>other As Variant</ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Equals</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>Returns True if this pair equals the passed object.</CodeDescription>
+  <PartID>887203839</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Equals(other As Variant) As Boolean</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Returns True if this pair equals the passed object.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Note: Part of the FKComparable interface.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If Self Is other Then Return True</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// A pair can only equal another pair.</SourceLine>
+   <SourceLine>If other IsA FKPair = False Then Return False</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Cast the comparison object to a FKPair.</SourceLine>
+   <SourceLine>Var otherPair As FKPair = FKPair(other)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Compare the keys.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If Self.Key IsA FKComparable Then</SourceLine>
+   <SourceLine>If Not FKComparable(Self.Key).Equals(otherPair.Key) Then</SourceLine>
+   <SourceLine>// The keys are not equal.</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>ElseIf otherPair.Key IsA FKComparable Then</SourceLine>
+   <SourceLine>If Not FKComparable(otherPair.Key).Equals(Self.Key) Then</SourceLine>
+   <SourceLine>// The keys are not equal.</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>ElseIf Self.Key.Type = Variant.TypeString And otherPair.Key.Type = Variant.TypeString Then</SourceLine>
+   <SourceLine>// The keys are strings. Do a case-sensitive comparison.</SourceLine>
+   <SourceLine>Var selfKeyString As String = Self.Key</SourceLine>
+   <SourceLine>If selfKeyString.Compare(otherPair.Key, ComparisonOptions.CaseSensitive) &lt;&gt; 0 Then</SourceLine>
+   <SourceLine>// The keys are not equal.</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>If Self.Key &lt;&gt; otherPair.Key Then</SourceLine>
+   <SourceLine>// The keys are not equal.</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Compare the values.</SourceLine>
+   <SourceLine>If Self.Value IsA FKComparable Then</SourceLine>
+   <SourceLine>If Not FKComparable(Self.Value).Equals(otherPair.Value) Then</SourceLine>
+   <SourceLine>// The values are not equal.</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>ElseIf otherPair.Value IsA FKComparable Then</SourceLine>
+   <SourceLine>If Not FKComparable(otherPair.Value).Equals(Self.Value) Then</SourceLine>
+   <SourceLine>// The values are not equal.</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>ElseIf Self.Value.Type = Variant.TypeString And otherPair.Value.Type = Variant.TypeString Then</SourceLine>
+   <SourceLine>// The values are strings. Do a case-sensitive comparison.</SourceLine>
+   <SourceLine>Var selfValueString As String = Self.Value</SourceLine>
+   <SourceLine>If selfValueString.Compare(otherPair.Value, ComparisonOptions.CaseSensitive) &lt;&gt; 0 Then</SourceLine>
+   <SourceLine>// The values are not equal.</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>If Self.Value &lt;&gt; otherPair.Value Then</SourceLine>
+   <SourceLine>// The values are not equal.</SourceLine>
+   <SourceLine>Return False</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Consider the objects equal.</SourceLine>
+   <SourceLine>Return True</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>other As Variant</ItemParams>
+  <ItemResult>Boolean</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>HashCode</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>738293759</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function HashCode() As Integer</SourceLine>
+   <SourceLine>// Part of the FKComparable interface.</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If Self.Key IsA FKComparable Then</SourceLine>
+   <SourceLine>If Self.Value IsA FKComparable Then</SourceLine>
+   <SourceLine>// Both key and value are comparable.</SourceLine>
+   <SourceLine>Return FKComparable(Self.Key).HashCode * FKComparable(Self.Value).HashCode</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>// Just the key is comparable.</SourceLine>
+   <SourceLine>Return FKComparable(Self.Key).HashCode * Self.Value.Hash</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>ElseIf Self.Value IsA FKComparable Then</SourceLine>
+   <SourceLine>// Just the value is comparable.</SourceLine>
+   <SourceLine>Return Self.Key.Hash * FKComparable(Self.Value).HashCode</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>Return Variant(Self).Hash</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult>Integer</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>ToString</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1859342335</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function ToString() As String</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' - Note: Part of the FKStringable interface.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Var s() As String</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>s.AddRow("Pair[")</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Key.</SourceLine>
+   <SourceLine>If Self.Key IsA FKStringable Then</SourceLine>
+   <SourceLine>s.AddRow(FKStringable(Self.Key).ToString)</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>s.AddRow(Self.Key.StringValue)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Value.</SourceLine>
+   <SourceLine>If Self.Value IsA FKStringable Then</SourceLine>
+   <SourceLine>s.AddRow(FKStringable(Self.Value).ToString)</SourceLine>
+   <SourceLine>Else</SourceLine>
+   <SourceLine>s.AddRow(Self.Value.StringValue)</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return String.FromArray(s)</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams></ItemParams>
+  <ItemResult>String</ItemResult>
+ </Method>
+ <Method>
+  <ItemName>Constructor</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1412980735</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Sub Constructor(key As Variant, value As Variant)</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Minimal constructor.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter key: The key.</SourceLine>
+   <SourceLine>' - Parameter value: The variant.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Self.Key = key</SourceLine>
+   <SourceLine>Self.Value = value</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Sub</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant, value As Variant</ItemParams>
+  <ItemResult></ItemResult>
+ </Method>
+ <Property>
+  <ItemName>Key</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>1678860287</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Key As Variant</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>Key As Variant</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+ </Property>
+ <Property>
+  <ItemName>Value</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <PartID>412049407</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Value As Variant</SourceLine>
+   <SourceLine></SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <ItemDeclaration>Value As Variant</ItemDeclaration>
+  <ItemFlags>0</ItemFlags>
+  <IsShared>0</IsShared>
+ </Property>
+ <ViewBehavior>
+  <ViewProperty>
+   <ObjName>Name</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Index</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <PropertyValue>-2147483648</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Super</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>ID</PropertyGroup>
+   <ItemType>String</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Left</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Top</ObjName>
+   <Visible>1</Visible>
+   <PropertyGroup>Position</PropertyGroup>
+   <PropertyValue>0</PropertyValue>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+  <ViewProperty>
+   <ObjName>Key</ObjName>
+   <PropertyGroup>Behavior</PropertyGroup>
+   <ItemType>Integer</ItemType>
+  </ViewProperty>
+ </ViewBehavior>
+</block>
+</RBProject>

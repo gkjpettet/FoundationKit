@@ -23,7 +23,8 @@
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>mData.RemoveAll</SourceLine>
+   <SourceLine>mData.RemoveAllRows</SourceLine>
+   <SourceLine></SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Sub</SourceLine>
   </ItemSource>
@@ -49,8 +50,11 @@
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Return mData.HasKey(key)</SourceLine>
+   <SourceLine>For Each p As FKPair In mData</SourceLine>
+   <SourceLine>If Equals(p.Key, key) Then Return True</SourceLine>
+   <SourceLine>Next p</SourceLine>
    <SourceLine></SourceLine>
+   <SourceLine>Return False</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
@@ -75,10 +79,9 @@
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Var values() As Variant = mData.Values</SourceLine>
-   <SourceLine>For Each v As Variant In values</SourceLine>
-   <SourceLine>If ComparatorDelegate(v, value) = 0 Then Return True</SourceLine>
-   <SourceLine>Next v</SourceLine>
+   <SourceLine>For Each p As FKPair In mData</SourceLine>
+   <SourceLine>If Equals(p.Value, value) Then Return True</SourceLine>
+   <SourceLine>Next p</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>Return False</SourceLine>
    <SourceLine></SourceLine>
@@ -107,7 +110,7 @@
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Return mData.Lookup(key, Nil)</SourceLine>
+   <SourceLine>Return Lookup(key, Nil)</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -134,7 +137,7 @@
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Return mData.Lookup(key, default)</SourceLine>
+   <SourceLine>Return Lookup(key, default)</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -149,15 +152,19 @@
   <ItemName>IsEmpty</ItemName>
   <Compatibility></Compatibility>
   <Visible>1</Visible>
+  <CodeDescription>Returns True if this map contains no key-value mappings.</CodeDescription>
   <PartID>1672691711</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
    <SourceLine>Function IsEmpty() As Boolean</SourceLine>
    <SourceLine>///</SourceLine>
+   <SourceLine>' Returns True if this map contains no key-value mappings.</SourceLine>
+   <SourceLine>'</SourceLine>
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Raise New UnsupportedOperationException("This method is not implemented")</SourceLine>
+   <SourceLine>Return mData.Count = 0</SourceLine>
+   <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
@@ -189,14 +196,26 @@
    <SourceLine>' A Nil return can also indicate that the map previously associated Nil with `key`.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>If mData.HasKey(key) Then</SourceLine>
-   <SourceLine>Var tmp As Variant = mData.Value(key)</SourceLine>
-   <SourceLine>mData.Value(key) = value</SourceLine>
-   <SourceLine>Return tmp</SourceLine>
-   <SourceLine>Else</SourceLine>
-   <SourceLine>mData.Value(key) = value</SourceLine>
-   <SourceLine>Return Nil</SourceLine>
+   <SourceLine>Var limit As Integer = mData.LastRowIndex</SourceLine>
+   <SourceLine>Var p As FKPair</SourceLine>
+   <SourceLine>For i As Integer = 0 To limit</SourceLine>
+   <SourceLine>// Get this key:value pair.</SourceLine>
+   <SourceLine>p = mData(i)</SourceLine>
+   <SourceLine>If Equals(p.Key, key) Then</SourceLine>
+   <SourceLine>// Cache the old value to return.</SourceLine>
+   <SourceLine>Var oldValue As Variant = p.Value</SourceLine>
+   <SourceLine>// Assign the new value.</SourceLine>
+   <SourceLine>p.Value = value</SourceLine>
+   <SourceLine>// Return the old value.</SourceLine>
+   <SourceLine>Return oldValue</SourceLine>
    <SourceLine>End If</SourceLine>
+   <SourceLine>Next i</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// This key doesn't exist yet. Add it.</SourceLine>
+   <SourceLine>mData.AddRow(New FKPair(key, value))</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// Return Nil.</SourceLine>
+   <SourceLine>Return Nil</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -224,6 +243,8 @@
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
+   <SourceLine>#Pragma Unused m</SourceLine>
+   <SourceLine></SourceLine>
    <SourceLine>Raise New UnsupportedOperationException("This method is not implemented")</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Sub</SourceLine>
@@ -246,6 +267,9 @@
    <SourceLine>///</SourceLine>
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>#Pragma Unused key</SourceLine>
+   <SourceLine>#Pragma Unused value</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>Raise New UnsupportedOperationException("This method is not implemented")</SourceLine>
    <SourceLine>End Function</SourceLine>
@@ -276,11 +300,28 @@
    <SourceLine>' A Nil return can also indicate that the map previously associated Nil with key.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>If mData.HasKey(key) Then</SourceLine>
-   <SourceLine>Var tmp As Variant = mData.Value(key)</SourceLine>
-   <SourceLine>mData.Remove(key)</SourceLine>
+   <SourceLine>Var limit As Integer = mData.LastRowIndex</SourceLine>
+   <SourceLine>Var p As FKPair</SourceLine>
+   <SourceLine>Var indexToRemove As Integer = -1</SourceLine>
+   <SourceLine>For i As Integer = 0 To limit</SourceLine>
+   <SourceLine>// Get the key:value pair.</SourceLine>
+   <SourceLine>p = mData(i)</SourceLine>
+   <SourceLine>If Equals(p.Key, key) Then</SourceLine>
+   <SourceLine>// This is the key:value pair to remove.</SourceLine>
+   <SourceLine>indexToRemove = i</SourceLine>
+   <SourceLine>Exit</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>Next i</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>If indexToRemove &lt;&gt; -1 Then</SourceLine>
+   <SourceLine>// Cache the value we are about to remove.</SourceLine>
+   <SourceLine>Var tmp As Variant = mData(indexToRemove).Value</SourceLine>
+   <SourceLine>// Remove the key:value pair.</SourceLine>
+   <SourceLine>mData.RemoveRowAt(indexToRemove)</SourceLine>
+   <SourceLine>// Remove the cached old value.</SourceLine>
    <SourceLine>Return tmp</SourceLine>
    <SourceLine>Else</SourceLine>
+   <SourceLine>// The key was not found so return Nil.</SourceLine>
    <SourceLine>Return Nil</SourceLine>
    <SourceLine>End If</SourceLine>
    <SourceLine></SourceLine>
@@ -305,6 +346,9 @@
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
+   <SourceLine>#Pragma Unused key</SourceLine>
+   <SourceLine>#Pragma Unused value</SourceLine>
+   <SourceLine></SourceLine>
    <SourceLine>Raise New UnsupportedOperationException("This method is not implemented")</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -327,6 +371,9 @@
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
+   <SourceLine>#Pragma Unused key</SourceLine>
+   <SourceLine>#Pragma Unused value</SourceLine>
+   <SourceLine></SourceLine>
    <SourceLine>Raise New UnsupportedOperationException("This method is not implemented")</SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -348,6 +395,10 @@
    <SourceLine>///</SourceLine>
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>#Pragma Unused key</SourceLine>
+   <SourceLine>#Pragma Unused oldValue</SourceLine>
+   <SourceLine>#Pragma Unused newValue</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>Raise New UnsupportedOperationException("This method is not implemented")</SourceLine>
    <SourceLine>End Function</SourceLine>
@@ -374,7 +425,7 @@
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Return mData.KeyCount</SourceLine>
+   <SourceLine>Return mData.Count</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -400,7 +451,13 @@
    <SourceLine>' - Note: Part of the FKMap interface.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Return mData.Values</SourceLine>
+   <SourceLine>Var result() As Variant</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>For Each p As FKPair In mData</SourceLine>
+   <SourceLine>result.AddRow(p.Value)</SourceLine>
+   <SourceLine>Next p</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return result</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -448,7 +505,8 @@
    <SourceLine>' Default constructor.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>mData = New Dictionary(AddressOf ComparatorDelegate)</SourceLine>
+   <SourceLine>mData.RemoveAllRows</SourceLine>
+   <SourceLine></SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Sub</SourceLine>
   </ItemSource>
@@ -460,46 +518,44 @@
   <ItemResult></ItemResult>
  </Method>
  <Method>
-  <ItemName>ComparatorDelegate</ItemName>
+  <ItemName>Equals</ItemName>
   <Compatibility></Compatibility>
   <Visible>1</Visible>
+  <CodeDescription>Returns True if the two objects are considered equal.</CodeDescription>
   <PartID>1184882687</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>Function ComparatorDelegate(leftKey As Variant, rightKey As Variant) As Integer</SourceLine>
+   <SourceLine>Function Equals(obj1 As Variant, obj2 As Variant) As Boolean</SourceLine>
    <SourceLine>///</SourceLine>
-   <SourceLine>' Custom comparator for our backing dictionary.</SourceLine>
-   <SourceLine>'</SourceLine>
-   <SourceLine>' - Notes:</SourceLine>
-   <SourceLine>' Returns zero if both objects are considered equal. Otherwise returns `-1`.</SourceLine>
+   <SourceLine>' Returns True if the two objects are considered equal.</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>// Quick reference check.</SourceLine>
-   <SourceLine>If leftKey Is rightKey Then Return 0</SourceLine>
+   <SourceLine>If obj1 Is obj2 Then Return True</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>// Check using the FKComparable interface.</SourceLine>
-   <SourceLine>If leftKey IsA FKComparable Then</SourceLine>
-   <SourceLine>If FKComparable(leftKey).Equals(rightKey) Then</SourceLine>
-   <SourceLine>Return 0</SourceLine>
+   <SourceLine>If obj1 IsA FKComparable Then</SourceLine>
+   <SourceLine>If FKComparable(obj1).Equals(obj2) Then</SourceLine>
+   <SourceLine>Return True</SourceLine>
    <SourceLine>Else</SourceLine>
-   <SourceLine>Return -1</SourceLine>
+   <SourceLine>Return False</SourceLine>
    <SourceLine>End If</SourceLine>
-   <SourceLine>ElseIf rightKey IsA FKComparable Then</SourceLine>
-   <SourceLine>If FKComparable(rightKey).Equals(leftKey) Then</SourceLine>
-   <SourceLine>Return 0</SourceLine>
+   <SourceLine>ElseIf obj2 IsA FKComparable Then</SourceLine>
+   <SourceLine>If FKComparable(obj2).Equals(obj1) Then</SourceLine>
+   <SourceLine>Return True</SourceLine>
    <SourceLine>Else</SourceLine>
-   <SourceLine>Return -1</SourceLine>
+   <SourceLine>Return False</SourceLine>
    <SourceLine>End If</SourceLine>
    <SourceLine>End If</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>// Case sensitive strings.</SourceLine>
-   <SourceLine>If leftKey.Type = Variant.TypeString And rightKey.Type = Variant.TypeString Then</SourceLine>
-   <SourceLine>Var leftString As String = leftKey</SourceLine>
-   <SourceLine>Return leftString.Compare(rightKey, ComparisonOptions.CaseSensitive)</SourceLine>
+   <SourceLine>If obj1.Type = Variant.TypeString And obj2.Type = Variant.TypeString Then</SourceLine>
+   <SourceLine>Var obj1String As String = obj1</SourceLine>
+   <SourceLine>Return obj1String.Compare(obj2, ComparisonOptions.CaseSensitive) = 0</SourceLine>
    <SourceLine>End If</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>// All other types.</SourceLine>
-   <SourceLine>Return If(leftKey = rightKey, 0, -1)</SourceLine>
+   <SourceLine>Return obj1 = obj2</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Function</SourceLine>
   </ItemSource>
@@ -507,8 +563,8 @@
   <AliasName></AliasName>
   <ItemFlags>33</ItemFlags>
   <IsShared>0</IsShared>
-  <ItemParams>leftKey As Variant, rightKey As Variant</ItemParams>
-  <ItemResult>Integer</ItemResult>
+  <ItemParams>obj1 As Variant, obj2 As Variant</ItemParams>
+  <ItemResult>Boolean</ItemResult>
  </Method>
  <Method>
   <ItemName>Put</ItemName>
@@ -529,7 +585,20 @@
    <SourceLine>' A map is said to contain a mapping for a key if and only if: map.ContainsKey(key) = True</SourceLine>
    <SourceLine>///</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>mData.Value(key) = value</SourceLine>
+   <SourceLine>Var limit As Integer = mData.LastRowIndex</SourceLine>
+   <SourceLine>Var p As FKPair</SourceLine>
+   <SourceLine>For i As Integer = 0 To limit</SourceLine>
+   <SourceLine>// Get this key:value pair.</SourceLine>
+   <SourceLine>p = mData(i)</SourceLine>
+   <SourceLine>If Equals(p.Key, key) Then</SourceLine>
+   <SourceLine>// Assign the new value.</SourceLine>
+   <SourceLine>p.Value = value</SourceLine>
+   <SourceLine>Return</SourceLine>
+   <SourceLine>End If</SourceLine>
+   <SourceLine>Next i</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>// This key doesn't exist yet. Add it.</SourceLine>
+   <SourceLine>mData.AddRow(New FKPair(key, value))</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>End Sub</SourceLine>
   </ItemSource>
@@ -540,19 +609,50 @@
   <ItemParams>key As Variant, value As Variant</ItemParams>
   <ItemResult></ItemResult>
  </Method>
- <Property>
-  <ItemName>mData</ItemName>
+ <Method>
+  <ItemName>Lookup</ItemName>
   <Compatibility></Compatibility>
   <Visible>1</Visible>
-  <CodeDescription>The backing dictionary.</CodeDescription>
+  <CodeDescription>Returns the value associated with the specified key or the default value if key is not found.</CodeDescription>
+  <PartID>758980607</PartID>
+  <ItemSource>
+   <TextEncoding>134217984</TextEncoding>
+   <SourceLine>Function Lookup(key As Variant, default As Variant) As Variant</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine>' Returns the value associated with the specified key or the default value if key is not found.</SourceLine>
+   <SourceLine>'</SourceLine>
+   <SourceLine>' - Parameter key: The key to lookup.</SourceLine>
+   <SourceLine>' - Parameter default: The default value to return if key is not found.</SourceLine>
+   <SourceLine>///</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>For Each p As FKPair In mData</SourceLine>
+   <SourceLine>If Equals(p.Key, key) Then Return p.Value</SourceLine>
+   <SourceLine>Next p</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>Return default</SourceLine>
+   <SourceLine></SourceLine>
+   <SourceLine>End Function</SourceLine>
+  </ItemSource>
+  <TextEncoding>134217984</TextEncoding>
+  <AliasName></AliasName>
+  <ItemFlags>33</ItemFlags>
+  <IsShared>0</IsShared>
+  <ItemParams>key As Variant, default As Variant</ItemParams>
+  <ItemResult>Variant</ItemResult>
+ </Method>
+ <Property>
+  <ItemName>mData()</ItemName>
+  <Compatibility></Compatibility>
+  <Visible>1</Visible>
+  <CodeDescription>The backing array.</CodeDescription>
   <PartID>1610739711</PartID>
   <ItemSource>
    <TextEncoding>134217984</TextEncoding>
-   <SourceLine>mData As Dictionary</SourceLine>
+   <SourceLine>mData() As FKPair</SourceLine>
    <SourceLine></SourceLine>
   </ItemSource>
   <TextEncoding>134217984</TextEncoding>
-  <ItemDeclaration>mData As Dictionary</ItemDeclaration>
+  <ItemDeclaration>mData() As FKPair</ItemDeclaration>
   <ItemFlags>33</ItemFlags>
   <IsShared>0</IsShared>
  </Property>

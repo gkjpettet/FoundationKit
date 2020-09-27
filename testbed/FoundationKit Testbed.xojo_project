@@ -33,6 +33,7 @@ Folder=Utility;FoundationKit/Utility;&h0000000020280FFF;&h000000000422AFFF;false
 Class=FKHashMap;../FoundationKit/Utility/FKHashMap.xojo_xml_code;&h000000002CD1AFFF;&h0000000020280FFF;false
 Interface=FKMap;../FoundationKit/Utility/FKMap.xojo_xml_code;&h000000005B630FFF;&h0000000020280FFF;false
 Class=HashMapTests;Unit Tests/Tests/HashMapTests.xojo_code;&h0000000040824FFF;&h0000000044C729E7;false
+Class=FKPair;../FoundationKit/Utility/FKPair.xojo_xml_code;&h000000005AD79FFF;&h0000000020280FFF;false
 DefaultWindow=UnitTestsWindow
 AppMenuBar=MainMenuBar
 MajorVersion=1
