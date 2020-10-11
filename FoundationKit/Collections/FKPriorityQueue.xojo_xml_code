@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RBProject version="2020r1" FormatVersion="2" MinIDEVersion="20070100">
+<RBProject version="2020r1.1" FormatVersion="2" MinIDEVersion="20070100">
 <block type="Module" ID="2400255">
  <ObjName>FKPriorityQueue</ObjName>
  <ObjContainerID>1847701503</ObjContainerID>
@@ -818,7 +818,7 @@
    <NoteLine>modifies the queue.</NoteLine>
    <NoteLine></NoteLine>
    <NoteLine>Implementation note: this implementation provides O(log(n)) time for the enqueuing and dequeuing methods</NoteLine>
-   <NoteLine>`Offer`, `Poll`, `Remove` and `Add`); linear time for the `Remove(Object)` and `Contains(Object)`</NoteLine>
+   <NoteLine>`Offer`, `Poll`, `Remove` and `Add`), linear time for the `Remove(Object)` and `Contains(Object)`</NoteLine>
    <NoteLine>methods and constant time for the retrieval methods `Peek, `Element`, and `Size`.</NoteLine>
    <NoteLine></NoteLine>
   </ItemSource>
