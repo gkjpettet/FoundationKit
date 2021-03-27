@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RBProject version="2020r1.1" FormatVersion="2" MinIDEVersion="20070100">
+<RBProject version="2021r1" FormatVersion="2" MinIDEVersion="20070100">
 <block type="Module" ID="2400255">
  <ObjName>FKPriorityQueue</ObjName>
- <ObjContainerID>1847701503</ObjContainerID>
+ <ObjContainerID>60385279</ObjContainerID>
  <IsClass>1</IsClass>
  <ItemFlags>1</ItemFlags>
  <IsInterface>0</IsInterface>
@@ -181,7 +181,7 @@
    <SourceLine>Var newCapacity As Integer = FKArraysSupport.NewLength(_</SourceLine>
    <SourceLine>oldCapacity, _</SourceLine>
    <SourceLine>minCapacity - oldCapacity, _</SourceLine>
-   <SourceLine>If(oldCapacity &lt; 64, oldCapacity + 2, MathsKit.RShift(oldCapacity, 1)))</SourceLine>
+   <SourceLine>If(oldCapacity &lt; 64, oldCapacity + 2, Maths.RShift(oldCapacity, 1)))</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>Queue = FKArrays.CopyOf(queue, newCapacity)</SourceLine>
    <SourceLine></SourceLine>
@@ -584,7 +584,7 @@
    <SourceLine>Shared Sub SiftUpComparable(k As Integer, x As FKComparable, es() As FKComparable)</SourceLine>
    <SourceLine>Var key As FKComparable = x</SourceLine>
    <SourceLine>While k &gt; 0</SourceLine>
-   <SourceLine>Var parent As Integer = MathsKit.RShiftU32(k - 1, 1)</SourceLine>
+   <SourceLine>Var parent As Integer = Maths.RShiftU32(k - 1, 1)</SourceLine>
    <SourceLine>Var e As FKComparable = es(parent)</SourceLine>
    <SourceLine>If key.CompareTo(e) &gt;= 0 Then Exit</SourceLine>
    <SourceLine>es(k) = e</SourceLine>
@@ -669,11 +669,11 @@
    <SourceLine>Shared Sub SiftDownComparable(k As Integer, x As FKComparable, es() As FKComparable, n As Integer)</SourceLine>
    <SourceLine>Var key As FKComparable = x</SourceLine>
    <SourceLine></SourceLine>
-   <SourceLine>Var half As Integer = MathsKit.RShiftU32(n, 1)</SourceLine>
+   <SourceLine>Var half As Integer = Maths.RShiftU32(n, 1)</SourceLine>
    <SourceLine></SourceLine>
    <SourceLine>// Loop while a non-leaf.</SourceLine>
    <SourceLine>While k &lt; half</SourceLine>
-   <SourceLine>Var child As Integer = MathsKit.LShift32(k, 1) + 1 // Assume left child is least.</SourceLine>
+   <SourceLine>Var child As Integer = Maths.LShift32(k, 1) + 1 // Assume left child is least.</SourceLine>
    <SourceLine>Var c As FKComparable = es(child)</SourceLine>
    <SourceLine>Var right As Integer = child + 1</SourceLine>
    <SourceLine>If right &lt; n And c.CompareTo(es(right)) &gt; 0 Then</SourceLine>
@@ -741,7 +741,7 @@
    <SourceLine></SourceLine>
    <SourceLine>Var es() As FKComparable = Queue</SourceLine>
    <SourceLine>Var n As Integer = size</SourceLine>
-   <SourceLine>Var i As Integer = MathsKit.RShiftU32(n, 1) - 1</SourceLine>
+   <SourceLine>Var i As Integer = Maths.RShiftU32(n, 1) - 1</SourceLine>
    <SourceLine>If Comparator Is Nil Then</SourceLine>
    <SourceLine>While i &gt;= 0</SourceLine>
    <SourceLine>SiftDownComparable(i, es(i), es, n)</SourceLine>
