@@ -2,7 +2,6 @@
 Begin Menu XojoUnitMenuBar
    Begin MenuItem FileMenu
       SpecialMenu = 0
-      Value = "&File"
       Index = -2147483648
       Text = "&File"
       AutoEnabled = True
@@ -10,7 +9,6 @@ Begin Menu XojoUnitMenuBar
       Visible = True
       Begin MenuItem FileRunTests
          SpecialMenu = 0
-         Value = "&Run Tests"
          Index = -2147483648
          Text = "&Run Tests"
          ShortcutKey = "R"
@@ -22,7 +20,6 @@ Begin Menu XojoUnitMenuBar
       End
       Begin QuitMenuItem FileQuit
          SpecialMenu = 0
-         Value = "#App.kFileQuit"
          Index = -2147483648
          Text = "#App.kFileQuit"
          ShortcutKey = "#App.kFileQuitShortcut"
@@ -34,7 +31,6 @@ Begin Menu XojoUnitMenuBar
    End
    Begin MenuItem EditMenu
       SpecialMenu = 0
-      Value = "&Edit"
       Index = -2147483648
       Text = "&Edit"
       AutoEnabled = True
@@ -42,7 +38,6 @@ Begin Menu XojoUnitMenuBar
       Visible = True
       Begin MenuItem EditUndo
          SpecialMenu = 0
-         Value = "&Undo"
          Index = -2147483648
          Text = "&Undo"
          ShortcutKey = "Z"
@@ -54,7 +49,6 @@ Begin Menu XojoUnitMenuBar
       End
       Begin MenuItem UntitledMenu1
          SpecialMenu = 0
-         Value = "-"
          Index = -2147483648
          Text = "-"
          AutoEnabled = True
@@ -63,7 +57,6 @@ Begin Menu XojoUnitMenuBar
       End
       Begin MenuItem EditCut
          SpecialMenu = 0
-         Value = "Cu&t"
          Index = -2147483648
          Text = "Cu&t"
          ShortcutKey = "X"
@@ -75,7 +68,6 @@ Begin Menu XojoUnitMenuBar
       End
       Begin MenuItem EditCopy
          SpecialMenu = 0
-         Value = "&Copy"
          Index = -2147483648
          Text = "&Copy"
          ShortcutKey = "C"
@@ -87,7 +79,6 @@ Begin Menu XojoUnitMenuBar
       End
       Begin MenuItem EditPaste
          SpecialMenu = 0
-         Value = "&Paste"
          Index = -2147483648
          Text = "&Paste"
          ShortcutKey = "V"
@@ -99,7 +90,6 @@ Begin Menu XojoUnitMenuBar
       End
       Begin MenuItem EditClear
          SpecialMenu = 0
-         Value = "#App.kEditClear"
          Index = -2147483648
          Text = "#App.kEditClear"
          AutoEnabled = True
@@ -108,7 +98,6 @@ Begin Menu XojoUnitMenuBar
       End
       Begin MenuItem UntitledMenu0
          SpecialMenu = 0
-         Value = "-"
          Index = -2147483648
          Text = "-"
          AutoEnabled = True
@@ -117,7 +106,6 @@ Begin Menu XojoUnitMenuBar
       End
       Begin MenuItem EditSelectAllGroups
          SpecialMenu = 0
-         Value = "Select &All Groups"
          Index = -2147483648
          Text = "Select &All Groups"
          ShortcutKey = "A"
@@ -129,7 +117,6 @@ Begin Menu XojoUnitMenuBar
       End
       Begin MenuItem EditUnselectAllGroups
          SpecialMenu = 0
-         Value = "Unselect All Groups"
          Index = -2147483648
          Text = "Unselect All Groups"
          ShortcutKey = "-"
@@ -142,7 +129,6 @@ Begin Menu XojoUnitMenuBar
    End
    Begin MenuItem HelpMenu
       SpecialMenu = 0
-      Value = "&Help"
       Index = -2147483648
       Text = "&Help"
       AutoEnabled = True
@@ -150,7 +136,6 @@ Begin Menu XojoUnitMenuBar
       Visible = True
       Begin AppleMenuItem HelpAboutXojoUnit
          SpecialMenu = 0
-         Value = "&About XojoUnit"
          Index = -2147483648
          Text = "&About XojoUnit"
          AutoEnabled = True

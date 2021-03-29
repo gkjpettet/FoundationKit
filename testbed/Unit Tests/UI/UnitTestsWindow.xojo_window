@@ -44,8 +44,8 @@ Begin Window UnitTestsWindow
       FontName        =   "System"
       FontSize        =   0.0
       FontUnit        =   0
-      GridLinesHorizontalStyle=   "0"
-      GridLinesVerticalStyle=   "0"
+      GridLinesHorizontalStyle=   0
+      GridLinesVerticalStyle=   0
       HasBorder       =   True
       HasHeader       =   False
       HasHorizontalScrollbar=   False
@@ -63,7 +63,7 @@ Begin Window UnitTestsWindow
       LockRight       =   False
       LockTop         =   True
       RequiresSelection=   False
-      RowSelectionType=   "0"
+      RowSelectionType=   0
       Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
@@ -130,7 +130,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   44
@@ -165,7 +165,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   44
@@ -200,7 +200,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   2
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   76
@@ -235,7 +235,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   3
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   108
@@ -270,7 +270,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   4
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   140
@@ -305,7 +305,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   5
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   172
@@ -340,7 +340,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   6
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   44
@@ -375,7 +375,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   7
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   44
@@ -410,7 +410,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   8
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   76
@@ -445,7 +445,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   9
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   108
@@ -480,7 +480,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   10
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   140
@@ -515,7 +515,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   11
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   172
@@ -550,7 +550,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   12
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   172
@@ -585,7 +585,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   13
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   172
@@ -649,7 +649,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   245
@@ -684,7 +684,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   277
@@ -719,7 +719,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   2
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   277
@@ -767,13 +767,13 @@ Begin Window UnitTestsWindow
          TabIndex        =   3
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   346
          Transparent     =   False
          Underline       =   False
-         UnicodeMode     =   "0"
+         UnicodeMode     =   0
          ValidationMask  =   ""
          Value           =   ""
          Visible         =   True
@@ -804,7 +804,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   4
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   317
@@ -839,7 +839,7 @@ Begin Window UnitTestsWindow
          TabIndex        =   5
          TabPanelIndex   =   0
          TabStop         =   True
-         TextAlignment   =   "0"
+         TextAlignment   =   0
          TextColor       =   &c00000000
          Tooltip         =   ""
          Top             =   245
@@ -856,9 +856,7 @@ Begin Window UnitTestsWindow
       InitialParent   =   ""
       LockedInPosition=   False
       Scope           =   0
-      TabIndex        =   "3"
       TabPanelIndex   =   0
-      TabStop         =   True
       Visible         =   True
    End
    Begin DesktopTestController Controller
@@ -876,9 +874,7 @@ Begin Window UnitTestsWindow
       RunTestCount    =   0
       Scope           =   2
       SkippedCount    =   0
-      TabIndex        =   "4"
       TabPanelIndex   =   0
-      TabStop         =   True
    End
    Begin ProgressWheel ProgressWheel1
       AllowAutoDeactivate=   True
